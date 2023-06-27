@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Frame
+    x:Class="UI.IconSvg"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    x:Name="root"
+    Padding="0"
+    BackgroundColor="Transparent"
+    CornerRadius="{x:Static app:Dimens.EntryCornerRadius}"
+    HasShadow="False"
+    HorizontalOptions="Center"
+    VerticalOptions="Center">
+    <Frame.GestureRecognizers>
+        <TapGestureRecognizer
+            Command="{Binding Command, Source={x:Reference root}}"
+            CommandParameter="{Binding CommandParameter, Source={x:Reference root}}"
+            NumberOfTapsRequired="1"
+            Tapped="Handle_TouchAction" />
+    </Frame.GestureRecognizers>
+</Frame>

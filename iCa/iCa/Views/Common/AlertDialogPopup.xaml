@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="iCa.Views.Common.AlertDialogPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:ui="clr-namespace:UI"
+    Style="{StaticResource BackgroundClickPopup}">
+    <Grid VerticalOptions="CenterAndExpand">
+        <Frame Style="{StaticResource AlertFrame}">
+            <StackLayout Margin="10">
+                <Label
+                    FontFamily="BoldFont"
+                    FontSize="20"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource NormalLabel}"
+                    Text="{Binding Type, Converter={StaticResource TypeToDisplaySetAlertStringConverter}}"
+                    TextColor="{Binding Type, Converter={StaticResource TypeToDisplaySetAlertColorConverter}}" />
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    HorizontalTextAlignment="Center"
+                    LineBreakMode="WordWrap"
+                    Style="{StaticResource NormalLabel}"
+                    Text="{Binding Message}" />
+            </StackLayout>
+        </Frame>
+        <StackLayout HorizontalOptions="Center">
+            <Frame Style="{StaticResource Frame40}">
+                <StackLayout>
+                    <ui:IconSvg
+                        ResourceId="{Binding Type, Converter={StaticResource TypeToDisplaySetAlertIconConverter}}"
+                        Style="{StaticResource SmallIcon40}"
+                        TintColor="{Binding Type, Converter={StaticResource TypeToDisplaySetAlertColorConverter}}"
+                        VerticalOptions="Start" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </Grid>
+</pages:PopupPage>

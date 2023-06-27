@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rv:MaterialFrame
+    x:Class="UI.StepperView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    x:Name="root"
+    Padding="0"
+    HasShadow="False"
+    HeightRequest="36"
+    HorizontalOptions="StartAndExpand"
+    IsClippedToBounds="True"
+    Style="{StaticResource StepperFrame}"
+    WidthRequest="80">
+    <Grid
+        ColumnDefinitions="*,Auto,*"
+        Style="{StaticResource ButtonGrid}">
+        <Button
+            Grid.Column="0"
+            Clicked="MinusBtn_Clicked"
+            FontSize="20"
+            Style="{StaticResource PrimaryTransparentWithTextColorButton}"
+            Text="-" />
+        <!--<Label
+            Grid.Column="1"
+            Style="{StaticResource TitleLabel}"
+            Text="{Binding Value, Source={x:Reference root},Converter={StaticResource DoubleToConvertFormatConverter}}" />-->
+        <Button
+            Grid.Column="2"
+            Clicked="PlusBtn_Clicked"
+            FontSize="20"
+            Style="{StaticResource PrimaryTransparentWithTextColorButton}"
+            Text="+" />
+    </Grid>
+</rv:MaterialFrame>

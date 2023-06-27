@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="UI.PopupView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    BackgroundColor="Transparent"
+    Style="{StaticResource BasePage}">
+    <ContentPage.Content>
+        <rv:MaterialFrame
+            x:Name="SettingsFrame"
+            CornerRadius="15"
+            IsVisible="True"
+            MaterialTheme="Acrylic"
+            StyleId="1111" />
+    </ContentPage.Content>
+</ContentPage>

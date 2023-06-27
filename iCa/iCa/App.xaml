@@ -1,0 +1,728 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="iCa.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:cv="clr-namespace:Converter"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:ui="clr-namespace:UI">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <cv:ToggleBoolConverter x:Key="ToggleBoolConverter" />
+        <cv:Base64StringToImageSourceConverter x:Key="Base64StringToImageSourceConverter" />
+        <cv:BoolToColorWhiteRedConverter x:Key="BoolToColorConverter" />
+        <cv:StringToDecimalConverter x:Key="StringToDecimalConverter" />
+        <cv:TypeToDisplaySetAlertStringConverter x:Key="TypeToDisplaySetAlertStringConverter" />
+        <cv:TypeToDisplaySetAlertColorConverter x:Key="TypeToDisplaySetAlertColorConverter" />
+        <cv:TypeToDisplaySetAlertIconConverter x:Key="TypeToDisplaySetAlertIconConverter" />
+        <!--  Button  -->
+        <Style
+            x:Key="ThemeRoundButton"
+            TargetType="Button">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.WhiteColor}, Light={x:Static app:AppColors.WhiteColor}, Dark={x:Static app:AppColors.GrayColor}}" />
+            <Setter Property="BorderColor" Value="{AppThemeBinding Default={x:Static app:AppColors.WhiteColor}, Light={x:Static app:AppColors.WhiteColor}, Dark={x:Static app:AppColors.GrayColor}}" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="CornerRadius" Value="15" />
+            <Setter Property="FontFamily" Value="MediumFont" />
+            <Setter Property="FontSize" Value="{OnIdiom Tablet='Medium', Phone='Small'}" />
+            <Setter Property="HeightRequest" Value="{ui:OnScreenSize DefaultSize={x:Static app:Dimens.ButtonHeight}, ExtraSmall={x:Static app:Dimens.ButtonHeightExtraSmall}, Small={x:Static app:Dimens.ButtonHeightSmall}}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Phone='FillAndExpand', Tablet='CenterAndExpand'}" />
+            <Setter Property="WidthRequest" Value="{OnIdiom Tablet={x:Static app:Dimens.ButtonWidth}}" />
+            <Setter Property="MinimumWidthRequest" Value="{OnIdiom Tablet={x:Static app:Dimens.ButtonWidth}}" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Default={x:Static app:AppColors.TextPrimaryColor}, Light={x:Static app:AppColors.TextPrimaryColor}, Dark={x:Static app:AppColors.TextPrimaryDarkColor}}" />
+            <Setter Property="TextTransform" Value="None" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.WhiteColor}, Light={x:Static app:AppColors.WhiteColor}, Dark={x:Static app:AppColors.GrayColor}}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="PrimaryRoundButton"
+            TargetType="Button">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="BackgroundColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="BorderColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="CornerRadius" Value="{x:Static app:Dimens.ButtonCornerRadius}" />
+            <Setter Property="FontFamily" Value="BoldFont" />
+            <Setter Property="FontSize" Value="{OnIdiom Tablet='Medium', Phone='Default'}" />
+            <Setter Property="HeightRequest" Value="{ui:OnScreenSize DefaultSize={x:Static app:Dimens.ButtonHeight}, ExtraSmall={x:Static app:Dimens.ButtonHeightExtraSmall}, Small={x:Static app:Dimens.ButtonHeightSmall}}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Phone='FillAndExpand', Tablet='CenterAndExpand'}" />
+            <Setter Property="WidthRequest" Value="{OnIdiom Tablet={x:Static app:Dimens.ButtonWidth}}" />
+            <Setter Property="MinimumWidthRequest" Value="{OnIdiom Tablet={x:Static app:Dimens.ButtonWidth}}" />
+            <Setter Property="TextColor" Value="{x:Static app:AppColors.PrimaryDarkColor}" />
+            <Setter Property="TextTransform" Value="None" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="PrimaryCircleButton"
+            TargetType="Button">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="BackgroundColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="BorderColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="FontFamily" Value="BoldFont" />
+            <Setter Property="FontSize" Value="{OnIdiom Tablet='Medium', Phone='Default'}" />
+            <Setter Property="HeightRequest" Value="32" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="WidthRequest" Value="32" />
+            <Setter Property="MinimumWidthRequest" Value="32" />
+            <Setter Property="TextColor" Value="{x:Static app:AppColors.PrimaryDarkColor}" />
+            <Setter Property="TextTransform" Value="None" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="PrimaryTransparentButton"
+            TargetType="Button">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="CornerRadius" Value="{x:Static app:Dimens.ButtonCornerRadius}" />
+            <Setter Property="FontFamily" Value="BoldFont" />
+            <Setter Property="FontSize" Value="{OnIdiom Tablet='Medium', Phone=13}" />
+            <Setter Property="HeightRequest" Value="{ui:OnScreenSize DefaultSize=38, ExtraSmall={x:Static app:Dimens.ButtonHeightExtraSmall}, Small={x:Static app:Dimens.ButtonHeightSmall}}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Phone='FillAndExpand', Tablet='CenterAndExpand'}" />
+            <Setter Property="WidthRequest" Value="{OnIdiom Tablet={x:Static app:Dimens.ButtonWidth}}" />
+            <Setter Property="MinimumWidthRequest" Value="{OnIdiom Tablet={x:Static app:Dimens.ButtonWidth}}" />
+            <Setter Property="TextColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="TextTransform" Value="None" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="PrimaryTransparentWithTextColorButton"
+            TargetType="Button">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="BorderColor" Value="Transparent" />
+            <Setter Property="BorderWidth" Value="1" />
+            <Setter Property="CornerRadius" Value="{x:Static app:Dimens.ButtonCornerRadius}" />
+            <Setter Property="FontFamily" Value="BoldFont" />
+            <Setter Property="FontSize" Value="{OnIdiom Tablet='Medium', Phone=13}" />
+            <Setter Property="HeightRequest" Value="{ui:OnScreenSize DefaultSize=38, ExtraSmall={x:Static app:Dimens.ButtonHeightExtraSmall}, Small={x:Static app:Dimens.ButtonHeightSmall}}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Phone='FillAndExpand', Tablet='CenterAndExpand'}" />
+            <Setter Property="WidthRequest" Value="{OnIdiom Tablet={x:Static app:Dimens.ButtonWidth}}" />
+            <Setter Property="MinimumWidthRequest" Value="{OnIdiom Tablet={x:Static app:Dimens.ButtonWidth}}" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Dark='White', Light='Gray', Default='White'}" />
+            <Setter Property="TextTransform" Value="None" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="TransparentButton"
+            TargetType="Button">
+            <Setter Property="Margin" Value="10,0" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="FontFamily" Value="MediumFont" />
+            <Setter Property="FontSize" Value="{OnIdiom Tablet='Medium', Phone='Default'}" />
+            <Setter Property="HeightRequest" Value="{ui:OnScreenSize DefaultSize={x:Static app:Dimens.ButtonHeight}, ExtraSmall={x:Static app:Dimens.ButtonHeightExtraSmall}, Small={x:Static app:Dimens.ButtonHeightSmall}}" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Default={x:Static app:AppColors.TextPrimaryColor}, Light={x:Static app:AppColors.TextPrimaryColor}, Dark={x:Static app:AppColors.TextPrimaryDarkColor}}" />
+            <Setter Property="TextTransform" Value="None" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--  Label  -->
+        <Style
+            x:Key="HeaderLabel"
+            TargetType="Label">
+            <Setter Property="FontFamily" Value="BoldFont" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Default={x:Static app:AppColors.TextHeaderPrimaryColor}, Light={x:Static app:AppColors.TextHeaderPrimaryColor}, Dark={x:Static app:AppColors.TextHeaderPrimaryDarkColor}}" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="{OnIdiom Tablet=40, Phone='Title'}" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="TitleLabel"
+            TargetType="Label">
+            <Setter Property="FontFamily" Value="BoldFont" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Default={x:Static app:AppColors.TextPrimaryColor}, Light={x:Static app:AppColors.TextPrimaryColor}, Dark={x:Static app:AppColors.TextPrimaryDarkColor}}" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="{ui:OnScreenSize DefaultSize='Default', ExtraSmall='Small'}" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="ResponseMessageLabel"
+            TargetType="Label">
+            <Setter Property="FontFamily" Value="MediumFont" />
+            <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+            <Setter Property="Opacity" Value="0.8" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Default={x:Static app:AppColors.TextPrimaryDescriptionColor}, Light={x:Static app:AppColors.TextPrimaryDescriptionColor}, Dark={x:Static app:AppColors.TextPrimaryDescriptionDarkColor}}" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="{OnIdiom Default='Micro', Tablet='Small', Phone='Micro'}" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="DescriptionLabel"
+            TargetType="Label">
+            <Setter Property="FontFamily" Value="ItalicFont" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+            <Setter Property="Opacity" Value="0.6" />
+            <Setter Property="LineBreakMode" Value="WordWrap" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Default={x:Static app:AppColors.TextPrimaryDescriptionColor}, Light={x:Static app:AppColors.TextPrimaryDescriptionColor}, Dark={x:Static app:AppColors.TextPrimaryDescriptionDarkColor}}" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="{OnIdiom Default='Micro', Tablet='Small', Phone='Micro'}" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style
+            x:Key="NormalLabel"
+            TargetType="Label">
+            <Setter Property="FontFamily" Value="MediumFont" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="HorizontalTextAlignment" Value="Start" />
+            <Setter Property="LineBreakMode" Value="TailTruncation" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Default={x:Static app:AppColors.TextPrimaryNormalColor}, Light={x:Static app:AppColors.TextPrimaryNormalColor}, Dark={x:Static app:AppColors.TextPrimaryNormalDarkColor}}" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="{ui:OnScreenSize DefaultSize='Default', ExtraSmall='Small'}" />
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <Setter.Value>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Pressed">
+                                <VisualState.Setters>
+                                    <Setter Property="Scale" Value="0.9" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--  Entry  -->
+        <Style
+            x:Key="PrimaryRoundEntry"
+            TargetType="Entry">
+            <Setter Property="MinimumWidthRequest" Value="{OnIdiom Tablet={x:Static app:Dimens.ButtonWidth}}" />
+            <Setter Property="WidthRequest" Value="{OnIdiom Tablet={x:Static app:Dimens.ButtonWidth}}" />
+            <Setter Property="MinimumHeightRequest" Value="{ui:OnScreenSize DefaultSize={x:Static app:Dimens.EntryHeight}, ExtraSmall={x:Static app:Dimens.EntryHeightXs}, Small={x:Static app:Dimens.EntryHeightSmall}}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Tablet='CenterAndExpand', Phone='FillAndExpand'}" />
+            <Setter Property="HeightRequest" Value="{ui:OnScreenSize DefaultSize={x:Static app:Dimens.EntryHeight}, ExtraSmall={x:Static app:Dimens.EntryHeightXs}, Small={x:Static app:Dimens.EntryHeightSmall}}" />
+            <Setter Property="FontFamily" Value="MediumFont" />
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={x:Static app:AppColors.TextEntryPrimaryColor}, Dark={x:Static app:AppColors.TextEntryPrimaryDarkColor}, Default={x:Static app:AppColors.TextEntryPrimaryColor}}" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={x:Static app:AppColors.TextPrimaryColor}, Dark={x:Static app:AppColors.TextPrimaryDarkColor}, Default={x:Static app:AppColors.TextPrimaryColor}}" />
+        </Style>
+        <!--  Page  -->
+        <Style
+            x:Key="BasePage"
+            TargetType="ContentPage">
+            <Setter Property="BackgroundImageSource" Value="{AppThemeBinding Light='lightbg.jpg', Dark='darkbg.jpg', Default='lightbg.jpg'}" />
+            <Setter Property="Shell.PresentationMode" Value="Modal" />
+            <Setter Property="Shell.NavBarIsVisible" Value="False" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.BackgroundLightColor}, Light={x:Static app:AppColors.BackgroundLightColor}, Dark={x:Static app:AppColors.BackgroundDarkColor}}" />
+        </Style>
+        <Style
+            x:Key="NoImageBackgroundPage"
+            TargetType="ContentPage">
+            <Setter Property="Shell.PresentationMode" Value="Modal" />
+            <Setter Property="Shell.NavBarIsVisible" Value="False" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.BackgroundLightColor}, Light={x:Static app:AppColors.BackgroundLightColor}, Dark={x:Static app:AppColors.BackgroundDarkColor}}" />
+        </Style>
+        <!--  StackLayout  -->
+        <Style
+            x:Key="PrimaryStackLayout"
+            TargetType="StackLayout">
+            <Setter Property="Margin" Value="{ui:EdgeInsets All={ui:OnScreenSize DefaultSize={x:Static app:Dimens.SpacingMd}, ExtraSmall={x:Static app:Dimens.SpacingXs}, Small={x:Static app:Dimens.SpacingSm}, Medium={x:Static app:Dimens.SpacingMd}, Large={x:Static app:Dimens.SpacingLg}, ExtraLarge={x:Static app:Dimens.SpacingXxl}}}" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+        </Style>
+        <!--  Image  -->
+        <Style
+            x:Key="CircleImage"
+            TargetType="Image">
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HeightRequest" Value="90" />
+            <Setter Property="WidthRequest" Value="90" />
+            <Setter Property="Clip">
+                <Setter.Value>
+                    <EllipseGeometry
+                        Center="45,45"
+                        RadiusX="45"
+                        RadiusY="45" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--  Icon  -->
+        <Style
+            x:Key="SmallIcon"
+            TargetType="ui:IconSvg">
+            <Setter Property="TintColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="HeightRequest" Value="{x:Static app:Dimens.IconSize}" />
+            <Setter Property="WidthRequest" Value="{x:Static app:Dimens.IconSize}" />
+        </Style>
+        <Style
+            x:Key="SmallIcon72"
+            TargetType="ui:IconSvg">
+            <Setter Property="TintColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="HeightRequest" Value="72" />
+            <Setter Property="MinimumHeightRequest" Value="72" />
+            <Setter Property="WidthRequest" Value="72" />
+            <Setter Property="MinimumWidthRequest" Value="72" />
+        </Style>
+        <Style
+            x:Key="ThemeSmallIcon72"
+            TargetType="ui:IconSvg">
+            <Setter Property="TintColor" Value="{AppThemeBinding Default={x:Static app:AppColors.IconPrimaryColor}, Light={x:Static app:AppColors.IconPrimaryColor}, Dark={x:Static app:AppColors.IconPrimaryDarkColor}}" />
+            <Setter Property="HeightRequest" Value="72" />
+            <Setter Property="MinimumHeightRequest" Value="72" />
+            <Setter Property="WidthRequest" Value="72" />
+            <Setter Property="MinimumWidthRequest" Value="72" />
+        </Style>
+        <Style
+            x:Key="LargeIcon"
+            TargetType="ui:IconSvg">
+            <Setter Property="TintColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="HeightRequest" Value="{x:Static app:Dimens.IconSizeLarge}" />
+            <Setter Property="WidthRequest" Value="{x:Static app:Dimens.IconSizeLarge}" />
+        </Style>
+        <Style
+            x:Key="ThemeSmallIcon"
+            TargetType="ui:IconSvg">
+            <Setter Property="TintColor" Value="{AppThemeBinding Default={x:Static app:AppColors.IconPrimaryColor}, Light={x:Static app:AppColors.IconPrimaryColor}, Dark={x:Static app:AppColors.IconPrimaryDarkColor}}" />
+            <Setter Property="HeightRequest" Value="{x:Static app:Dimens.IconSize}" />
+            <Setter Property="WidthRequest" Value="{x:Static app:Dimens.IconSize}" />
+        </Style>
+        <Style
+            x:Key="SmallIcon32"
+            TargetType="ui:IconSvg">
+            <Setter Property="TintColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="MinimumHeightRequest" Value="32" />
+            <Setter Property="HeightRequest" Value="32" />
+            <Setter Property="MinimumWidthRequest" Value="32" />
+            <Setter Property="WidthRequest" Value="32" />
+        </Style>
+        <Style
+            x:Key="ThemeSmallIcon32"
+            TargetType="ui:IconSvg">
+            <Setter Property="TintColor" Value="{AppThemeBinding Default={x:Static app:AppColors.IconPrimaryColor}, Light={x:Static app:AppColors.IconPrimaryColor}, Dark={x:Static app:AppColors.IconPrimaryDarkColor}}" />
+            <Setter Property="MinimumHeightRequest" Value="32" />
+            <Setter Property="HeightRequest" Value="32" />
+            <Setter Property="MinimumWidthRequest" Value="32" />
+            <Setter Property="WidthRequest" Value="32" />
+        </Style>
+        <Style
+            x:Key="RoundSmallIcon"
+            TargetType="ui:IconSvg">
+            <Setter Property="TintColor" Value="{AppThemeBinding Default={x:Static app:AppColors.IconPrimaryColor}, Light={x:Static app:AppColors.IconPrimaryColor}, Dark={x:Static app:AppColors.IconPrimaryDarkColor}}" />
+            <Setter Property="HeightRequest" Value="{x:Static app:Dimens.IconSize}" />
+            <Setter Property="WidthRequest" Value="{x:Static app:Dimens.IconSize}" />
+        </Style>
+        <Style
+            x:Key="SmallIcon40"
+            TargetType="ui:IconSvg">
+            <Setter Property="TintColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="MinimumHeightRequest" Value="40" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="MinimumWidthRequest" Value="40" />
+            <Setter Property="WidthRequest" Value="40" />
+        </Style>
+        <Style
+            x:Key="SmallIcon12"
+            TargetType="ui:IconSvg">
+            <Setter Property="TintColor" Value="{AppThemeBinding Default={x:Static app:AppColors.IconPrimaryColor}, Light={x:Static app:AppColors.IconPrimaryColor}, Dark={x:Static app:AppColors.IconPrimaryDarkColor}}" />
+            <Setter Property="HeightRequest" Value="12" />
+            <Setter Property="MinimumWidthRequest" Value="12" />
+            <Setter Property="MinimumHeightRequest" Value="12" />
+            <Setter Property="WidthRequest" Value="12" />
+        </Style>
+        <!--  SearchBar  -->
+        <Style
+            x:Key="PrimarySearchBar"
+            TargetType="SearchBar">
+            <Setter Property="CancelButtonColor" Value="{AppThemeBinding Light={x:Static app:AppColors.TextPrimaryColor}, Dark={x:Static app:AppColors.TextPrimaryDarkColor}, Default={x:Static app:AppColors.TextPrimaryColor}}" />
+            <Setter Property="MinimumHeightRequest" Value="{ui:OnScreenSize DefaultSize={x:Static app:Dimens.SearchBarHeight}, ExtraSmall={x:Static app:Dimens.SearchBarHeightXs}, Small={x:Static app:Dimens.SearchBarHeightSmall}}" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="HeightRequest" Value="{ui:OnScreenSize DefaultSize={x:Static app:Dimens.SearchBarHeight}, ExtraSmall={x:Static app:Dimens.SearchBarHeightXs}, Small={x:Static app:Dimens.SearchBarHeightSmall}}" />
+            <Setter Property="FontFamily" Value="MediumFont" />
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Default=White, Light=White, Dark=Black}" />
+            <Setter Property="Placeholder" Value="{AppThemeBinding Light={x:Static app:AppColors.TextEntryPrimaryColor}, Dark={x:Static app:AppColors.TextEntryPrimaryDarkColor}, Default={x:Static app:AppColors.TextEntryPrimaryColor}}" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={x:Static app:AppColors.TextPrimaryColor}, Dark={x:Static app:AppColors.TextPrimaryDarkColor}, Default={x:Static app:AppColors.TextPrimaryColor}}" />
+        </Style>
+        <!--  ListView  -->
+        <Style
+            x:Key="PrimaryListView"
+            TargetType="ListView">
+            <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+            <Setter Property="SeparatorVisibility" Value="Default" />
+            <Setter Property="HasUnevenRows" Value="True" />
+            <Setter Property="SelectionMode" Value="Single" />
+            <Setter Property="BackgroundColor" Value="Transparent" />
+            <Setter Property="SeparatorColor" Value="{AppThemeBinding Light={x:Static app:AppColors.SeparatorLightColor}, Dark={x:Static app:AppColors.SeparatorDarkColor}}" />
+        </Style>
+        <!--  Frame  -->
+        <Style
+            x:Key="BaseFrame"
+            TargetType="rv:MaterialFrame">
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="MinimumWidthRequest" Value="{x:Static app:Dimens.PopupWidth}" />
+            <Setter Property="WidthRequest" Value="{x:Static app:Dimens.PopupWidth}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Phone='FillAndExpand', Tablet='CenterAndExpand'}" />
+            <Setter Property="CornerRadius" Value="{x:Static app:Dimens.BaseFrameCornerRadius}" />
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="MaterialTheme" Value="{AppThemeBinding Dark='Dark', Light='Acrylic', Default='Acrylic'}" />
+            <Setter Property="LightThemeBackgroundColor" Value="{x:Static app:AppColors.WhiteColor}" />
+        </Style>
+        <Style
+            x:Key="StepperFrame"
+            TargetType="rv:MaterialFrame">
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="MinimumWidthRequest" Value="120" />
+            <Setter Property="WidthRequest" Value="120" />
+            <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="HasShadow" Value="True" />
+            <Setter Property="MaterialTheme" Value="{AppThemeBinding Dark='Dark', Light='Acrylic', Default='Acrylic'}" />
+        </Style>
+        <Style
+            x:Key="EntryPopup"
+            TargetType="rv:MaterialFrame">
+            <Setter Property="Margin" Value="{ui:EdgeInsets All={ui:OnScreenSize DefaultSize={x:Static app:Dimens.MarginPopupMd}, ExtraSmall={x:Static app:Dimens.MarginPopupXs}, Small={x:Static app:Dimens.MarginPopupSm}, Medium={x:Static app:Dimens.MarginPopupMd}, Large={x:Static app:Dimens.MarginPopupLg}, ExtraLarge={x:Static app:Dimens.MarginPopupXxl}}}" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="MinimumWidthRequest" Value="{x:Static app:Dimens.PopupWidth}" />
+            <Setter Property="WidthRequest" Value="{x:Static app:Dimens.PopupWidth}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Phone='FillAndExpand', Tablet='CenterAndExpand'}" />
+            <Setter Property="CornerRadius" Value="{x:Static app:Dimens.PopupCornerRadius}" />
+            <Setter Property="MaterialTheme" Value="{AppThemeBinding Dark='Dark', Light='Acrylic', Default='Acrylic'}" />
+            <Setter Property="LightThemeBackgroundColor" Value="{x:Static app:AppColors.BackgroundLightColor}" />
+        </Style>
+        <Style
+            x:Key="MenuPopup"
+            TargetType="rv:MaterialFrame">
+            <Setter Property="Margin" Value="{ui:EdgeInsets All={ui:OnScreenSize DefaultSize={x:Static app:Dimens.MarginMenuPopupMd}, ExtraSmall={x:Static app:Dimens.MarginMenuPopupXs}, Small={x:Static app:Dimens.MarginMenuPopupSm}, Medium={x:Static app:Dimens.MarginMenuPopupMd}, Large={x:Static app:Dimens.MarginMenuPopupLg}, ExtraLarge={x:Static app:Dimens.MarginMenuPopupXxl}}}" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="MinimumWidthRequest" Value="{x:Static app:Dimens.PopupWidth}" />
+            <Setter Property="WidthRequest" Value="{x:Static app:Dimens.PopupWidth}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Phone='FillAndExpand', Tablet='CenterAndExpand'}" />
+            <Setter Property="CornerRadius" Value="{x:Static app:Dimens.PopupCornerRadius}" />
+            <Setter Property="MaterialTheme" Value="{AppThemeBinding Dark='Dark', Light='Acrylic', Default='Acrylic'}" />
+            <Setter Property="LightThemeBackgroundColor" Value="{x:Static app:AppColors.WhiteColor}" />
+        </Style>
+        <Style
+            x:Key="SmallFrame"
+            TargetType="rv:MaterialFrame">
+            <Setter Property="Margin" Value="20" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="MinimumWidthRequest" Value="{x:Static app:Dimens.PopupWidth}" />
+            <Setter Property="WidthRequest" Value="{x:Static app:Dimens.PopupWidth}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Phone='FillAndExpand', Tablet='CenterAndExpand'}" />
+            <Setter Property="CornerRadius" Value="{x:Static app:Dimens.PopupCornerRadius}" />
+            <Setter Property="MaterialTheme" Value="{AppThemeBinding Dark='Dark', Light='Acrylic', Default='Acrylic'}" />
+            <Setter Property="LightThemeBackgroundColor" Value="{x:Static app:AppColors.BackgroundLightColor}" />
+        </Style>
+        <Style
+            x:Key="SmallEntryFrame"
+            TargetType="Frame">
+            <Setter Property="Padding" Value="5,0" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="HeightRequest" Value="36" />
+            <Setter Property="MinimumHeightRequest" Value="36" />
+            <Setter Property="MinimumWidthRequest" Value="{x:Static app:Dimens.BaseFrameMinimumWidth}" />
+            <Setter Property="WidthRequest" Value="{x:Static app:Dimens.BaseFrameWidth}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Phone='FillAndExpand', Tablet='CenterAndExpand'}" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Dark={x:Static app:AppColors.BackgroundDarkColor}, Light={x:Static app:AppColors.WhiteColor}, Default={x:Static app:AppColors.BackgroundLightColor}}" />
+        </Style>
+        <!--  Popup  -->
+        <Style
+            x:Key="Frame40"
+            TargetType="rv:MaterialFrame">
+            <Setter Property="Padding" Value="5" />
+            <Setter Property="CornerRadius" Value="144" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="VerticalOptions" Value="Start" />
+            <Setter Property="MinimumWidthRequest" Value="40" />
+            <Setter Property="WidthRequest" Value="40" />
+            <Setter Property="MinimumHeightRequest" Value="40" />
+            <Setter Property="HeightRequest" Value="40" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="MaterialTheme" Value="{AppThemeBinding Dark='Dark', Light='Acrylic', Default='Acrylic'}" />
+            <Setter Property="LightThemeBackgroundColor" Value="{x:Static app:AppColors.BackgroundLightColor}" />
+        </Style>
+        <Style
+            x:Key="AlertFrame"
+            TargetType="rv:MaterialFrame">
+            <Setter Property="Margin" Value="20" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="HasShadow" Value="False" />
+            <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+            <Setter Property="MinimumWidthRequest" Value="{x:Static app:Dimens.PopupWidth}" />
+            <Setter Property="WidthRequest" Value="{x:Static app:Dimens.PopupWidth}" />
+            <Setter Property="HorizontalOptions" Value="{OnIdiom Phone='FillAndExpand', Tablet='CenterAndExpand'}" />
+            <Setter Property="CornerRadius" Value="{x:Static app:Dimens.PopupCornerRadius}" />
+            <Setter Property="MaterialTheme" Value="{AppThemeBinding Dark='Dark', Light='Acrylic', Default='Acrylic'}" />
+            <Setter Property="LightThemeBackgroundColor" Value="{x:Static app:AppColors.BackgroundLightColor}" />
+        </Style>
+        <Style
+            x:Key="BackgroundClickPopup"
+            TargetType="pages:PopupPage">
+            <Setter Property="Animation">
+                <Setter.Value>
+                    <animations:ScaleAnimation
+                        DurationIn="200"
+                        DurationOut="200"
+                        PositionIn="Bottom"
+                        PositionOut="Bottom" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="CloseWhenBackgroundIsClicked" Value="True" />
+        </Style>
+        <Style
+            x:Key="NoBackgroundClickPopup"
+            TargetType="pages:PopupPage">
+            <Setter Property="Animation">
+                <Setter.Value>
+                    <animations:ScaleAnimation
+                        DurationIn="200"
+                        DurationOut="200"
+                        PositionIn="Bottom"
+                        PositionOut="Bottom" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="CloseWhenBackgroundIsClicked" Value="False" />
+        </Style>
+        <!--  Indicator  -->
+        <Style
+            x:Key="Indicator18"
+            TargetType="ActivityIndicator">
+            <Setter Property="FlowDirection" Value="MatchParent" />
+            <Setter Property="MinimumWidthRequest" Value="18" />
+            <Setter Property="WidthRequest" Value="18" />
+            <Setter Property="MinimumHeightRequest" Value="18" />
+            <Setter Property="HeightRequest" Value="18" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Color" Value="{AppThemeBinding Default={x:Static app:AppColors.TextPrimaryNormalColor}, Light={x:Static app:AppColors.TextPrimaryNormalColor}, Dark={x:Static app:AppColors.TextPrimaryNormalDarkColor}}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+        <Style
+            x:Key="Indicator16"
+            TargetType="ActivityIndicator">
+            <Setter Property="FlowDirection" Value="MatchParent" />
+            <Setter Property="MinimumWidthRequest" Value="16" />
+            <Setter Property="WidthRequest" Value="16" />
+            <Setter Property="MinimumHeightRequest" Value="16" />
+            <Setter Property="HeightRequest" Value="16" />
+            <Setter Property="HorizontalOptions" Value="Center" />
+            <Setter Property="Color" Value="{AppThemeBinding Default={x:Static app:AppColors.TextPrimaryNormalColor}, Light={x:Static app:AppColors.TextPrimaryNormalColor}, Dark={x:Static app:AppColors.TextPrimaryNormalDarkColor}}" />
+            <Setter Property="VerticalOptions" Value="Center" />
+        </Style>
+        <!--  Grid  -->
+        <Style
+            x:Key="ButtonGrid"
+            TargetType="Grid">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="HeightRequest" Value="{ui:OnScreenSize DefaultSize={x:Static app:Dimens.ButtonHeight}, ExtraSmall={x:Static app:Dimens.ButtonHeightExtraSmall}, Small={x:Static app:Dimens.ButtonHeightSmall}}" />
+            <Setter Property="MinimumHeightRequest" Value="{ui:OnScreenSize DefaultSize={x:Static app:Dimens.ButtonHeight}, ExtraSmall={x:Static app:Dimens.ButtonHeightExtraSmall}, Small={x:Static app:Dimens.ButtonHeightSmall}}" />
+        </Style>
+        <!--  Separator  -->
+        <Style
+            x:Key="HorizontalSeparator"
+            TargetType="StackLayout">
+            <Setter Property="Margin" Value="0,10" />
+            <Setter Property="HeightRequest" Value="1" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={x:Static app:AppColors.SeparatorLightColor}, Dark={x:Static app:AppColors.SeparatorDarkColor}}" />
+        </Style>
+        <Style
+            x:Key="VerticalSeparator"
+            TargetType="StackLayout">
+            <Setter Property="Margin" Value="0,10" />
+            <Setter Property="WidthRequest" Value="1" />
+            <Setter Property="HeightRequest" Value="42" />
+            <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={x:Static app:AppColors.SeparatorLightColor}, Dark={x:Static app:AppColors.SeparatorDarkColor}}" />
+        </Style>
+        <!--  Date picker  -->
+        <Style
+            x:Key="PrimaryDatePicker"
+            TargetType="DatePicker">
+            <Setter Property="Format" Value="dd-MM-yyyy" />
+            <Setter Property="FontFamily" Value="BoldFont" />
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="TextColor" Value="{AppThemeBinding Light={x:Static app:AppColors.TextDatePickerColor}, Dark={x:Static app:AppColors.TextDatePickerDarkColor}, Default={x:Static app:AppColors.TextDatePickerColor}}" />
+        </Style>
+    </Application.Resources>
+</Application>

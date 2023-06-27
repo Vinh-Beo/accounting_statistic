@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="iCa.Views.Main.Order.Menu.OrderMenuPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:lang="clr-namespace:Language"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:ui="clr-namespace:UI"
+    Style="{StaticResource BackgroundClickPopup}">
+    <rv:MaterialFrame Style="{StaticResource MenuPopup}">
+        <StackLayout HorizontalOptions="Center">
+            <ui:ItemMenuHorizontalStackLayout
+                Command="{Binding EditCmd}"
+                IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                ResourceId="ic_pencil.svg"
+                Text="{lang:Translate Edit}"
+                TintColor="{x:Static app:AppColors.PrimaryColor}" />
+            <ui:ItemMenuHorizontalStackLayout
+                Command="{Binding DeleteCmd}"
+                IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                ResourceId="ic_delete_foreve.svg"
+                Text="{lang:Translate DeleteOrder}"
+                TintColor="{x:Static app:AppColors.RedColor}" />
+        </StackLayout>
+    </rv:MaterialFrame>
+</pages:PopupPage>

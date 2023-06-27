@@ -1,0 +1,556 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="googlesheet.json" />
+    <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
+    <None Remove="Resources\Fonts\Montserrat-Italic.ttf" />
+    <None Remove="Resources\Fonts\Montserrat-Light.ttf" />
+    <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
+    <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
+    <None Remove="Resources\Fonts\Montserrat-SemiBold.ttf" />
+    <None Remove="Resources\Fonts\Montserrat-Thin.ttf" />
+    <None Remove="Resources\Icons\arrow-expand-all.svg" />
+    <None Remove="Resources\Icons\floating_in_water.svg" />
+    <None Remove="Resources\Icons\ic_account.svg" />
+    <None Remove="Resources\Icons\ic_account_cog.svg" />
+    <None Remove="Resources\Icons\ic_account_off.svg" />
+    <None Remove="Resources\Icons\ic_add-note.svg" />
+    <None Remove="Resources\Icons\ic_add_note.svg" />
+    <None Remove="Resources\Icons\ic_advanced.svg" />
+    <None Remove="Resources\Icons\ic_airplane.svg" />
+    <None Remove="Resources\Icons\ic_air_conditioner.svg" />
+    <None Remove="Resources\Icons\ic_alarm.svg" />
+    <None Remove="Resources\Icons\ic_alarm_off.svg" />
+    <None Remove="Resources\Icons\ic_alert.svg" />
+    <None Remove="Resources\Icons\ic_arrow_expand.svg" />
+    <None Remove="Resources\Icons\ic_arrow_expand_all.svg" />
+    <None Remove="Resources\Icons\ic_auto_off.svg" />
+    <None Remove="Resources\Icons\ic_auto_play_box_lock.svg" />
+    <None Remove="Resources\Icons\ic_back.svg" />
+    <None Remove="Resources\Icons\ic_backward.svg" />
+    <None Remove="Resources\Icons\ic_bag_checked.svg" />
+    <None Remove="Resources\Icons\ic_balloon.svg" />
+    <None Remove="Resources\Icons\ic_barcode.svg" />
+    <None Remove="Resources\Icons\ic_barley.svg" />
+    <None Remove="Resources\Icons\ic_barley_off.svg" />
+    <None Remove="Resources\Icons\ic_bathtub_outline.svg" />
+    <None Remove="Resources\Icons\ic_bed.svg" />
+    <None Remove="Resources\Icons\ic_bell_cog.svg" />
+    <None Remove="Resources\Icons\ic_bell_ring.svg" />
+    <None Remove="Resources\Icons\ic_camera.svg" />
+    <None Remove="Resources\Icons\ic_camera_ai.svg" />
+    <None Remove="Resources\Icons\ic_cellphone.svg" />
+    <None Remove="Resources\Icons\ic_center.svg" />
+    <None Remove="Resources\Icons\ic_change_content.svg" />
+    <None Remove="Resources\Icons\ic_change_icon.svg" />
+    <None Remove="Resources\Icons\ic_change_name.svg" />
+    <None Remove="Resources\Icons\ic_change_pass.svg" />
+    <None Remove="Resources\Icons\ic_change_pic.svg" />
+    <None Remove="Resources\Icons\ic_check.svg" />
+    <None Remove="Resources\Icons\ic_checkbox.svg" />
+    <None Remove="Resources\Icons\ic_chef_hat.svg" />
+    <None Remove="Resources\Icons\ic_circle-opacity.svg" />
+    <None Remove="Resources\Icons\ic_circle_opacity.svg" />
+    <None Remove="Resources\Icons\ic_circle_white.svg" />
+    <None Remove="Resources\Icons\ic_close_box.svg" />
+    <None Remove="Resources\Icons\ic_close_circle.svg" />
+    <None Remove="Resources\Icons\ic_cloud_download.svg" />
+    <None Remove="Resources\Icons\ic_cloud_upload.svg" />
+    <None Remove="Resources\Icons\ic_code.svg" />
+    <None Remove="Resources\Icons\ic_cog.svg" />
+    <None Remove="Resources\Icons\ic_controller.svg" />
+    <None Remove="Resources\Icons\ic_cookie_off.svg" />
+    <None Remove="Resources\Icons\ic_crop-square.svg" />
+    <None Remove="Resources\Icons\ic_curtains.svg" />
+    <None Remove="Resources\Icons\ic_curtains_closed.svg" />
+    <None Remove="Resources\Icons\ic_dance_ballroom.svg" />
+    <None Remove="Resources\Icons\ic_database.svg" />
+    <None Remove="Resources\Icons\ic_database_off.svg" />
+    <None Remove="Resources\Icons\ic_delete_foreve.svg" />
+    <None Remove="Resources\Icons\ic_delete_forever.svg" />
+    <None Remove="Resources\Icons\ic_dim.svg" />
+    <None Remove="Resources\Icons\ic_door-close.svg" />
+    <None Remove="Resources\Icons\ic_door-open.svg" />
+    <None Remove="Resources\Icons\ic_door-sliding.svg" />
+    <None Remove="Resources\Icons\ic_door.svg" />
+    <None Remove="Resources\Icons\ic_door_close.svg" />
+    <None Remove="Resources\Icons\ic_door_open.svg" />
+    <None Remove="Resources\Icons\ic_dots-horizontal.svg" />
+    <None Remove="Resources\Icons\ic_dots_horizontal.svg" />
+    <None Remove="Resources\Icons\ic_double_layer.svg" />
+    <None Remove="Resources\Icons\ic_draw.svg" />
+    <None Remove="Resources\Icons\ic_drink.svg" />
+    <None Remove="Resources\Icons\ic_edit_remind.svg" />
+    <None Remove="Resources\Icons\ic_enter.svg" />
+    <None Remove="Resources\Icons\ic_error.svg" />
+    <None Remove="Resources\Icons\ic_esc.svg" />
+    <None Remove="Resources\Icons\ic_exit_door.svg" />
+    <None Remove="Resources\Icons\ic_exit_to_app.svg" />
+    <None Remove="Resources\Icons\ic_external_link.svg" />
+    <None Remove="Resources\Icons\ic_eye_off.svg" />
+    <None Remove="Resources\Icons\ic_eye_outline.svg" />
+    <None Remove="Resources\Icons\ic_fan.svg" />
+    <None Remove="Resources\Icons\ic_fan_off.svg" />
+    <None Remove="Resources\Icons\ic_fan_speed_1.svg" />
+    <None Remove="Resources\Icons\ic_fan_speed_2.svg" />
+    <None Remove="Resources\Icons\ic_fan_speed_3.svg" />
+    <None Remove="Resources\Icons\ic_fish.svg" />
+    <None Remove="Resources\Icons\ic_fish_off.svg" />
+    <None Remove="Resources\Icons\ic_food_turkey.svg" />
+    <None Remove="Resources\Icons\ic_forest_outline.svg" />
+    <None Remove="Resources\Icons\ic_forward.svg" />
+    <None Remove="Resources\Icons\ic_garage.svg" />
+    <None Remove="Resources\Icons\ic_garage_lock.svg" />
+    <None Remove="Resources\Icons\ic_gardern.svg" />
+    <None Remove="Resources\Icons\ic_gate_close.svg" />
+    <None Remove="Resources\Icons\ic_gate_open.svg" />
+    <None Remove="Resources\Icons\ic_gmt.svg" />
+    <None Remove="Resources\Icons\ic_go_out.svg" />
+    <None Remove="Resources\Icons\ic_gymnastics.svg" />
+    <None Remove="Resources\Icons\ic_hand_back_left.svg" />
+    <None Remove="Resources\Icons\ic_help.svg" />
+    <None Remove="Resources\Icons\ic_help_box.svg" />
+    <None Remove="Resources\Icons\ic_history.svg" />
+    <None Remove="Resources\Icons\ic_home.svg" />
+    <None Remove="Resources\Icons\ic_home_account.svg" />
+    <None Remove="Resources\Icons\ic_home_alarm.svg" />
+    <None Remove="Resources\Icons\ic_home_automation.svg" />
+    <None Remove="Resources\Icons\ic_humidity.svg" />
+    <None Remove="Resources\Icons\ic_image_area.svg" />
+    <None Remove="Resources\Icons\ic_information.svg" />
+    <None Remove="Resources\Icons\ic_ir.svg" />
+    <None Remove="Resources\Icons\ic_kilogram.svg" />
+    <None Remove="Resources\Icons\ic_led.svg" />
+    <None Remove="Resources\Icons\ic_light.svg" />
+    <None Remove="Resources\Icons\ic_lightbulb.svg" />
+    <None Remove="Resources\Icons\ic_link.svg" />
+    <None Remove="Resources\Icons\ic_lock.svg" />
+    <None Remove="Resources\Icons\ic_lock_open.svg" />
+    <None Remove="Resources\Icons\ic_love.svg" />
+    <None Remove="Resources\Icons\ic_meeting.svg" />
+    <None Remove="Resources\Icons\ic_menu.svg" />
+    <None Remove="Resources\Icons\ic_menu_up.svg" />
+    <None Remove="Resources\Icons\ic_microphone.svg" />
+    <None Remove="Resources\Icons\ic_minus.svg" />
+    <None Remove="Resources\Icons\ic_monitor.svg" />
+    <None Remove="Resources\Icons\ic_moon.svg" />
+    <None Remove="Resources\Icons\ic_motion.svg" />
+    <None Remove="Resources\Icons\ic_motion_sensor.svg" />
+    <None Remove="Resources\Icons\ic_movie_off.svg" />
+    <None Remove="Resources\Icons\ic_movie_open.svg" />
+    <None Remove="Resources\Icons\ic_music.svg" />
+    <None Remove="Resources\Icons\ic_note.svg" />
+    <None Remove="Resources\Icons\ic_notification.svg" />
+    <None Remove="Resources\Icons\ic_numeric_0_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_1_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_2_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_2_circle.svg" />
+    <None Remove="Resources\Icons\ic_numeric_3_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_3_circle.svg" />
+    <None Remove="Resources\Icons\ic_numeric_4_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_4_circle.svg" />
+    <None Remove="Resources\Icons\ic_numeric_5_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_5_circle.svg" />
+    <None Remove="Resources\Icons\ic_numeric_6_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_6_circle.svg" />
+    <None Remove="Resources\Icons\ic_numeric_7_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_7_circle.svg" />
+    <None Remove="Resources\Icons\ic_numeric_8_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_9_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_s_box.svg" />
+    <None Remove="Resources\Icons\ic_numeric_s_circle.svg" />
+    <None Remove="Resources\Icons\ic_party_popper.svg" />
+    <None Remove="Resources\Icons\ic_pause.svg" />
+    <None Remove="Resources\Icons\ic_pencil.svg" />
+    <None Remove="Resources\Icons\ic_pin.svg" />
+    <None Remove="Resources\Icons\ic_play.svg" />
+    <None Remove="Resources\Icons\ic_plus_add.svg" />
+    <None Remove="Resources\Icons\ic_pool.svg" />
+    <None Remove="Resources\Icons\ic_pool_thermometer.svg" />
+    <None Remove="Resources\Icons\ic_power.svg" />
+    <None Remove="Resources\Icons\ic_power_cycle.svg" />
+    <None Remove="Resources\Icons\ic_power_socket.svg" />
+    <None Remove="Resources\Icons\ic_projector.svg" />
+    <None Remove="Resources\Icons\ic_push_notification.svg" />
+    <None Remove="Resources\Icons\ic_qrcode.svg" />
+    <None Remove="Resources\Icons\ic_radiobox.svg" />
+    <None Remove="Resources\Icons\ic_remote.svg" />
+    <None Remove="Resources\Icons\ic_reset.svg" />
+    <None Remove="Resources\Icons\ic_reset_factory.svg" />
+    <None Remove="Resources\Icons\ic_response.svg" />
+    <None Remove="Resources\Icons\ic_restart.svg" />
+    <None Remove="Resources\Icons\ic_rotate.svg" />
+    <None Remove="Resources\Icons\ic_save.svg" />
+    <None Remove="Resources\Icons\ic_scene.svg" />
+    <None Remove="Resources\Icons\ic_school.svg" />
+    <None Remove="Resources\Icons\ic_search.svg" />
+    <None Remove="Resources\Icons\ic_server.svg" />
+    <None Remove="Resources\Icons\ic_shield.svg" />
+    <None Remove="Resources\Icons\ic_shield_lock.svg" />
+    <None Remove="Resources\Icons\ic_shield_off.svg" />
+    <None Remove="Resources\Icons\ic_smart-home-app.svg" />
+    <None Remove="Resources\Icons\ic_smart-home-app2.svg" />
+    <None Remove="Resources\Icons\ic_smart_door_lock.svg" />
+    <None Remove="Resources\Icons\ic_smart_home_app.svg" />
+    <None Remove="Resources\Icons\ic_smart_home_app2.svg" />
+    <None Remove="Resources\Icons\ic_smart_linker.svg" />
+    <None Remove="Resources\Icons\ic_snowflake_thermometer.svg" />
+    <None Remove="Resources\Icons\ic_socket.svg" />
+    <None Remove="Resources\Icons\ic_speaker.svg" />
+    <None Remove="Resources\Icons\ic_sprinkler_variant.svg" />
+    <None Remove="Resources\Icons\ic_square.svg" />
+    <None Remove="Resources\Icons\ic_square_ black.svg" />
+    <None Remove="Resources\Icons\ic_square_box.svg" />
+    <None Remove="Resources\Icons\ic_stairs.svg" />
+    <None Remove="Resources\Icons\ic_stop.svg" />
+    <None Remove="Resources\Icons\ic_sunny.svg" />
+    <None Remove="Resources\Icons\ic_sync.svg" />
+    <None Remove="Resources\Icons\ic_table_of_contents.svg" />
+    <None Remove="Resources\Icons\ic_television_classic.svg" />
+    <None Remove="Resources\Icons\ic_temperature.svg" />
+    <None Remove="Resources\Icons\ic_timer-outline.svg" />
+    <None Remove="Resources\Icons\ic_timer.svg" />
+    <None Remove="Resources\Icons\ic_timer_outline.svg" />
+    <None Remove="Resources\Icons\ic_toggle_off.svg" />
+    <None Remove="Resources\Icons\ic_toggle_on.svg" />
+    <None Remove="Resources\Icons\ic_track_light.svg" />
+    <None Remove="Resources\Icons\ic_transit_connection.svg" />
+    <None Remove="Resources\Icons\ic_triangle-down.svg" />
+    <None Remove="Resources\Icons\ic_triangle-small-up.svg" />
+    <None Remove="Resources\Icons\ic_up.svg" />
+    <None Remove="Resources\Icons\ic_usb.svg" />
+    <None Remove="Resources\Icons\ic_usd.svg" />
+    <None Remove="Resources\Icons\ic_user.svg" />
+    <None Remove="Resources\Icons\ic_volume_high.svg" />
+    <None Remove="Resources\Icons\ic_volume_mute.svg" />
+    <None Remove="Resources\Icons\ic_wake_up.svg" />
+    <None Remove="Resources\Icons\ic_walk.svg" />
+    <None Remove="Resources\Icons\ic_wap_horizontal.svg" />
+    <None Remove="Resources\Icons\ic_water.svg" />
+    <None Remove="Resources\Icons\ic_water_off.svg" />
+    <None Remove="Resources\Icons\ic_weight_lifter.svg" />
+    <None Remove="Resources\Icons\ic_wifi.svg" />
+    <None Remove="Resources\Icons\up_menu_up.svg" />
+    <None Remove="Resources\Keys\googlesheet.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="googlesheet.json" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Bold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Italic.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Light.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Medium.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Regular.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-SemiBold.ttf" />
+    <EmbeddedResource Include="Resources\Fonts\Montserrat-Thin.ttf" />
+    <EmbeddedResource Include="Resources\Icons\arrow-expand-all.svg" />
+    <EmbeddedResource Include="Resources\Icons\floating_in_water.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_account.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_account_cog.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_account_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_add-note.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_add_note.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_advanced.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_airplane.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_air_conditioner.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_alarm.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_alarm_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_alert.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_arrow_expand.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_arrow_expand_all.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_auto_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_auto_play_box_lock.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_back.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_backward.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_bag_checked.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_balloon.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_barcode.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_barley.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_barley_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_bathtub_outline.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_bed.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_bell_cog.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_bell_ring.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_camera.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_camera_ai.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_cellphone.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_center.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_change_content.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_change_icon.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_change_name.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_change_pass.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_change_pic.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_check.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_checkbox.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_chef_hat.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_circle-opacity.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_circle_opacity.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_circle_white.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_close_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_close_circle.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_cloud_download.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_cloud_upload.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_code.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_cog.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_controller.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_cookie_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_crop-square.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_curtains.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_curtains_closed.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_dance_ballroom.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_database.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_database_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_delete_foreve.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_delete_forever.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_dim.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_door-close.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_door-open.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_door-sliding.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_door.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_door_close.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_door_open.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_dots-horizontal.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_dots_horizontal.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_double_layer.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_draw.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_drink.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_edit_remind.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_enter.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_error.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_esc.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_exit_door.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_exit_to_app.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_external_link.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_eye_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_eye_outline.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_fan.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_fan_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_fan_speed_1.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_fan_speed_2.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_fan_speed_3.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_fish.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_fish_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_food_turkey.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_forest_outline.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_forward.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_garage.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_garage_lock.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_gardern.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_gate_close.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_gate_open.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_gmt.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_go_out.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_gymnastics.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_hand_back_left.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_help.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_help_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_history.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_home.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_home_account.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_home_alarm.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_home_automation.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_humidity.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_image_area.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_information.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_ir.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_kilogram.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_led.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_light.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_lightbulb.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_link.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_lock.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_lock_open.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_love.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_meeting.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_menu.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_menu_up.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_microphone.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_minus.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_monitor.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_moon.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_motion.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_motion_sensor.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_movie_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_movie_open.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_music.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_note.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_notification.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_0_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_1_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_2_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_2_circle.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_3_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_3_circle.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_4_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_4_circle.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_5_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_5_circle.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_6_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_6_circle.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_7_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_7_circle.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_8_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_9_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_s_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_numeric_s_circle.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_party_popper.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_pause.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_pencil.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_pin.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_play.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_plus_add.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_pool.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_pool_thermometer.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_power.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_power_cycle.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_power_socket.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_projector.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_push_notification.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_qrcode.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_radiobox.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_remote.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_reset.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_reset_factory.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_response.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_restart.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_rotate.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_save.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_scene.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_school.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_search.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_server.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_shield.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_shield_lock.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_shield_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_smart-home-app.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_smart-home-app2.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_smart_door_lock.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_smart_home_app.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_smart_home_app2.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_smart_linker.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_snowflake_thermometer.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_socket.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_speaker.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_sprinkler_variant.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_square.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_square_ black.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_square_box.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_stairs.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_stop.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_sunny.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_sync.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_table_of_contents.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_television_classic.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_temperature.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_timer-outline.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_timer.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_timer_outline.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_toggle_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_toggle_on.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_track_light.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_transit_connection.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_triangle-down.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_triangle-small-up.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_up.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_usb.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_usd.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_user.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_volume_high.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_volume_mute.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_wake_up.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_walk.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_wap_horizontal.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_water.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_water_off.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_weight_lifter.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_wifi.svg" />
+    <EmbeddedResource Include="Resources\Icons\up_menu_up.svg" />
+    <EmbeddedResource Include="Resources\Keys\googlesheet.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="4.1.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+    <PackageReference Include="Google.Apis.Sheets.v4" Version="1.60.0.3071" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+    <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
+    <PackageReference Include="Sharpnado.MaterialFrame" Version="1.3.0" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.88.3" />
+    <PackageReference Include="Xam.Plugins.Settings" Version="3.1.1" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Language\AppResources.vi.Designer.cs">
+      <DependentUpon>AppResources.vi.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Language\AppResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Main\Order\Detail\ItemsList\ItemsListView.xaml.cs">
+      <DependentUpon>ItemsListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Main\Order\Detail\Popup\ConfirmFillDataToSheetPopup.xaml.cs">
+      <DependentUpon>ConfirmFillDataToSheetPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Main\Order\Detail\Popup\CreateSheetNamePopup.xaml.cs">
+      <DependentUpon>CreateSheetNamePopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Main\Order\Detail\Popup\OrderItemDetailPopup.xaml.cs">
+      <DependentUpon>OrderItemDetailPopup.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Language\AppResources.vi.resx">
+      <LastGenOutput>AppResources.vi.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Language\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Auth\StartupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Common\AlertDialogPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\Item\OrderItem.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\Order\Detail\ItemsList\ItemsListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\Order\Detail\OrderDetailPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\Order\Menu\Add\AddNewOrderPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\Order\Menu\Delete\DeleteOrderPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\Order\Menu\Edit\EditOrderPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\Order\Menu\OrderMenuPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Main\Order\OrdersPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

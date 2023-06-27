@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="iCa.Views.Main.Order.Detail.ItemsList.ItemsListView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:ui="clr-namespace:UI">
+    <StackLayout>
+        <ListView
+            x:Name="lvInfo"
+            IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+            ItemsSource="{Binding Items}"
+            SelectionMode="None"
+            SeparatorColor="Transparent"
+            Style="{StaticResource PrimaryListView}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Padding="0">
+                            <rv:MaterialFrame
+                                x:Name="spnlMain"
+                                Margin="3"
+                                Padding="10"
+                                AcrylicGlowColor="Transparent"
+                                CornerRadius="15"
+                                HorizontalOptions="FillAndExpand"
+                                Style="{StaticResource BaseFrame}">
+                                <StackLayout
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+                                    <StackLayout
+                                        Margin="10,0"
+                                        HorizontalOptions="FillAndExpand">
+                                        <Grid ColumnDefinitions="*,*">
+                                            <Label
+                                                Grid.Column="0"
+                                                HorizontalOptions="StartAndExpand"
+                                                HorizontalTextAlignment="Start"
+                                                LineBreakMode="WordWrap"
+                                                Style="{StaticResource TitleLabel}"
+                                                Text="{Binding Name}"
+                                                TextColor="{AppThemeBinding Default='Black',
+                                                                            Light='Black',
+                                                                            Dark='White'}" />
+                                            <Label
+                                                Grid.Column="1"
+                                                FontFamily="ItalicFont"
+                                                HorizontalOptions="EndAndExpand"
+                                                HorizontalTextAlignment="Center"
+                                                Style="{StaticResource NormalLabel}"
+                                                Text="{Binding CreateTime, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                                        </Grid>
+                                        <!--<Label
+                                            HorizontalOptions="StartAndExpand"
+                                            LineBreakMode="NoWrap"
+                                            Style="{DynamicResource NormalLabel}"
+                                            Text="{Binding Price, StringFormat='$ {0}'}" />-->
+                                        <StackLayout Orientation="Horizontal">
+                                            <ui:IconSvg
+                                                ResourceId="ic_kilogram.svg"
+                                                Style="{StaticResource ThemeSmallIcon}"
+                                                TintColor="{x:Static app:AppColors.OrangeColor}" />
+                                            <Label
+                                                HorizontalOptions="StartAndExpand"
+                                                LineBreakMode="NoWrap"
+                                                Style="{DynamicResource NormalLabel}"
+                                                Text="{Binding Weight}" />
+                                        </StackLayout>
+                                        <Grid ColumnDefinitions="*,*">
+                                            <StackLayout
+                                                Grid.Column="0"
+                                                Orientation="Horizontal">
+                                                <ui:IconSvg
+                                                    ResourceId="ic_usd.svg"
+                                                    Style="{StaticResource ThemeSmallIcon}"
+                                                    TintColor="{x:Static app:AppColors.OrangeColor}" />
+                                                <Label
+                                                    HorizontalOptions="StartAndExpand"
+                                                    LineBreakMode="NoWrap"
+                                                    Style="{DynamicResource NormalLabel}"
+                                                    Text="{Binding Price}" />
+                                            </StackLayout>
+                                            <Frame
+                                                Grid.Column="1"
+                                                BackgroundColor="{x:Static app:AppColors.PrimaryColor}"
+                                                Style="{StaticResource SmallEntryFrame}">
+                                                <Label
+                                                    HorizontalTextAlignment="Center"
+                                                    LineBreakMode="NoWrap"
+                                                    Style="{StaticResource TitleLabel}"
+                                                    Text="{Binding Total, StringFormat='{0} đ'}"
+                                                    TextColor="{x:Static app:AppColors.WhiteColor}" />
+                                            </Frame>
+                                        </Grid>
+                                    </StackLayout>
+                                </StackLayout>
+                            </rv:MaterialFrame>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid
+            ColumnDefinitions="*,*"
+            HorizontalOptions="FillAndExpand"
+            Style="{StaticResource ButtonGrid}"
+            VerticalOptions="End">
+            <Label
+                Grid.Column="0"
+                HorizontalOptions="StartAndExpand"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="WordWrap"
+                Style="{StaticResource TitleLabel}"
+                Text="{Binding WeightTotal, StringFormat='Khối lượng: {0}'}"
+                TextColor="{AppThemeBinding Default='Black',
+                                            Light='Black',
+                                            Dark='White'}" />
+            <Label
+                Grid.Column="1"
+                HorizontalOptions="EndAndExpand"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="WordWrap"
+                Style="{StaticResource TitleLabel}"
+                Text="{Binding PriceTotal, StringFormat='Tổng cộng: {0}'}"
+                TextColor="{AppThemeBinding Default='Black',
+                                            Light='Black',
+                                            Dark='White'}" />
+        </Grid>
+    </StackLayout>
+</ContentView>

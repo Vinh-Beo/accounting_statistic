@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="iCa.Views.Main.Order.Menu.Add.AddNewOrderPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:ui="clr-namespace:UI"
+    Style="{StaticResource NoBackgroundClickPopup}">
+    <rv:MaterialFrame Style="{StaticResource EntryPopup}">
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center">
+            <Grid
+                ColumnDefinitions="*,*"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout
+                    Grid.Column="0"
+                    Orientation="Horizontal">
+                    <Label
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabel}"
+                        Text="Thêm đơn hàng mới" />
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        Style="{StaticResource Indicator16}" />
+                </StackLayout>
+                <Grid
+                    Grid.Column="1"
+                    ColumnDefinitions="Auto,*,Auto"
+                    HorizontalOptions="End">
+                    <ui:IconSvg
+                        Grid.Column="0"
+                        Padding="0"
+                        Command="{Binding BackDayCmd}"
+                        ResourceId="ic_menu_up.svg"
+                        Rotation="270"
+                        Style="{StaticResource ThemeSmallIcon32}" />
+                    <rv:MaterialFrame
+                        Grid.Column="1"
+                        Margin="0"
+                        Padding="0"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource SmallFrame}">
+                        <DatePicker
+                            Date="{Binding Info.CreateTime}"
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource PrimaryDatePicker}"
+                            TextColor="{AppThemeBinding Default='Black',
+                                                        Light='Black',
+                                                        Dark='White'}" />
+                    </rv:MaterialFrame>
+                    <ui:IconSvg
+                        Grid.Column="2"
+                        Command="{Binding NextDayCmd}"
+                        ResourceId="ic_menu_up.svg"
+                        Rotation="90"
+                        Style="{StaticResource ThemeSmallIcon32}" />
+                </Grid>
+            </Grid>
+            <!--  Main view  -->
+            <Entry
+                IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                Placeholder="Tên"
+                Style="{StaticResource PrimaryRoundEntry}"
+                Text="{Binding Info.Name, Mode=TwoWay}" />
+            <Entry
+                IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                Placeholder="Khối lượng"
+                Style="{StaticResource PrimaryRoundEntry}"
+                Text="{Binding Info.Weight}" />
+            <Entry
+                IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                Placeholder="Giá"
+                Style="{StaticResource PrimaryRoundEntry}"
+                Text="{Binding Info.Price}" />
+            <Label
+                Style="{StaticResource ResponseMessageLabel}"
+                Text="{Binding ResponseMessage}"
+                TextColor="{Binding ResponseOK, Converter={StaticResource BoolToColorConverter}}" />
+            <Grid
+                ColumnDefinitions="*,Auto,*"
+                Style="{StaticResource ButtonGrid}">
+                <Button
+                    Grid.Column="0"
+                    Command="{Binding OKCmd}"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                    Style="{StaticResource PrimaryTransparentButton}"
+                    Text="Đồng ý" />
+                <StackLayout
+                    Grid.Column="1"
+                    Style="{StaticResource VerticalSeparator}" />
+                <Button
+                    Grid.Column="2"
+                    Command="{Binding CancelCmd}"
+                    Style="{StaticResource PrimaryTransparentWithTextColorButton}"
+                    Text="Hủy" />
+            </Grid>
+        </StackLayout>
+    </rv:MaterialFrame>
+</pages:PopupPage>

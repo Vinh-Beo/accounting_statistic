@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StackLayout
+    x:Class="UI.ItemMenuHorizontalStackLayout"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:lang="clr-namespace:Language"
+    xmlns:ui="clr-namespace:UI"
+    x:Name="root"
+    HorizontalOptions="FillAndExpand"
+    Orientation="Horizontal"
+    Spacing="0">
+    <Grid
+        Margin="0,2"
+        ColumnDefinitions="Auto,*"
+        HorizontalOptions="StartAndExpand">
+        <ui:IconSvg
+            Grid.Column="0"
+            Margin="0,5"
+            ResourceId="{Binding ResourceId, Source={x:Reference root}}"
+            Style="{StaticResource SmallIcon}"
+            TintColor="{Binding TintColor, Source={x:Reference root}}" />
+        <Label
+            Grid.Column="1"
+            Margin="20,0,0,0"
+            FontSize="{ui:OnScreenSize DefaultSize='Default',
+                                       ExtraSmall='Small'}"
+            HorizontalOptions="StartAndExpand"
+            LineBreakMode="TailTruncation"
+            Style="{StaticResource NormalLabel}"
+            Text="{Binding Text, Source={x:Reference root}}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding Command, Source={x:Reference root}}"
+                    CommandParameter="{Binding CommandParameter, Source={x:Reference root}}"
+                    NumberOfTapsRequired="1" />
+            </Label.GestureRecognizers>
+        </Label>
+    </Grid>
+</StackLayout>

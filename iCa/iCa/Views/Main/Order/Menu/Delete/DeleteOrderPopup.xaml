@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="iCa.Views.Main.Order.Menu.Delete.DeleteOrderPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:ui="clr-namespace:UI"
+    Style="{StaticResource NoBackgroundClickPopup}">
+    <Grid VerticalOptions="CenterAndExpand">
+        <rv:MaterialFrame Style="{StaticResource AlertFrame}">
+            <StackLayout
+                Margin="10,30,10,10"
+                HorizontalOptions="Center"
+                VerticalOptions="Center">
+                <StackLayout Orientation="Horizontal">
+                    <Label
+                        FontFamily="BoldFont"
+                        FontSize="20"
+                        HorizontalOptions="CenterAndExpand"
+                        Style="{StaticResource NormalLabel}"
+                        Text="Xóa đơn hàng" />
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        Style="{StaticResource Indicator16}" />
+                </StackLayout>
+                <!--  Main view  -->
+                <Label
+                    Margin="5"
+                    HorizontalOptions="{OnIdiom Phone='FillAndExpand',
+                                                Tablet='CenterAndExpand'}"
+                    HorizontalTextAlignment="Start"
+                    LineBreakMode="WordWrap"
+                    Style="{StaticResource NormalLabel}"
+                    WidthRequest="{x:Static app:Dimens.ButtonWidth}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Bạn có thật sự muốn xóa đơn hàng" />
+                                <Span Text=" " />
+                                <Span Text="{Binding Info.Name}" />
+                                <Span Text=" " />
+                                <Span Text="{Binding Info.CreateTime, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label
+                    Style="{StaticResource ResponseMessageLabel}"
+                    Text="{Binding ResponseMessage}"
+                    TextColor="{Binding ResponseOK, Converter={StaticResource BoolToColorConverter}}" />
+                <Grid
+                    Padding="0"
+                    ColumnDefinitions="*,Auto,*"
+                    Style="{StaticResource ButtonGrid}">
+                    <Button
+                        Grid.Column="0"
+                        Command="{Binding OKCmd}"
+                        IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                        Style="{StaticResource PrimaryTransparentButton}"
+                        Text="Đồng ý" />
+                    <StackLayout
+                        Grid.Column="1"
+                        Style="{StaticResource VerticalSeparator}" />
+                    <Button
+                        Grid.Column="2"
+                        Command="{Binding CancelCmd}"
+                        Style="{StaticResource PrimaryTransparentWithTextColorButton}"
+                        Text="Hủy" />
+                </Grid>
+            </StackLayout>
+        </rv:MaterialFrame>
+        <rv:MaterialFrame Style="{StaticResource Frame40}">
+            <StackLayout>
+                <ui:IconSvg
+                    ResourceId="ic_alert.svg"
+                    Style="{StaticResource SmallIcon40}"
+                    TintColor="{x:Static app:AppColors.IconYellowColor}"
+                    VerticalOptions="Start" />
+            </StackLayout>
+        </rv:MaterialFrame>
+    </Grid>
+</pages:PopupPage>

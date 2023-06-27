@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="iCa.Views.Main.Item.OrderItem"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:img="clr-namespace:CustomControl"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:ui="clr-namespace:UI">
+    <ContentView.Content>
+        <Grid Padding="0">
+            <rv:MaterialFrame
+                x:Name="spnlMain"
+                Margin="3"
+                Padding="10"
+                AcrylicGlowColor="Transparent"
+                CornerRadius="15"
+                HorizontalOptions="FillAndExpand"
+                Style="{StaticResource BaseFrame}">
+                <Grid
+                    ColumnDefinitions="3*,7*"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Image
+                        Grid.Column="0"
+                        BackgroundColor="Red"
+                        HorizontalOptions="Start"
+                        Source="{Binding Image, Converter={StaticResource Base64StringToImageSourceConverter}}"
+                        Style="{StaticResource CircleImage}"
+                        VerticalOptions="CenterAndExpand" />
+                    <StackLayout
+                        Grid.Column="1"
+                        Margin="10,0"
+                        HorizontalOptions="FillAndExpand">
+                        <Grid ColumnDefinitions="*,*">
+                            <Label
+                                Grid.Column="0"
+                                HorizontalOptions="StartAndExpand"
+                                HorizontalTextAlignment="Start"
+                                LineBreakMode="WordWrap"
+                                Style="{StaticResource TitleLabel}"
+                                Text="{Binding Name}"
+                                TextColor="{AppThemeBinding Default='Black',
+                                                            Light='Black',
+                                                            Dark='White'}" />
+                            <Label
+                                Grid.Column="1"
+                                FontFamily="ItalicFont"
+                                HorizontalOptions="EndAndExpand"
+                                HorizontalTextAlignment="Center"
+                                Style="{StaticResource NormalLabel}"
+                                Text="{Binding CreateTime, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                        </Grid>
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource NormalLabel}"
+                            Text="{Binding Price, StringFormat='$ {0}'}" />
+                        <Grid ColumnDefinitions="*,*">
+                            <ui:StepperView
+                                Increment="0.1"
+                                Maximum="1000"
+                                Minimum="0"
+                                Value="{Binding Weight}" />
+                            <Frame
+                                Grid.Column="1"
+                                BackgroundColor="{x:Static app:AppColors.PrimaryColor}"
+                                Style="{StaticResource SmallEntryFrame}">
+                                <Label
+                                    HorizontalTextAlignment="Center"
+                                    LineBreakMode="NoWrap"
+                                    Style="{StaticResource TitleLabel}"
+                                    Text="{Binding Total, StringFormat='{0} đ'}"
+                                    TextColor="{x:Static app:AppColors.WhiteColor}" />
+                            </Frame>
+                        </Grid>
+                    </StackLayout>
+                </Grid>
+            </rv:MaterialFrame>
+            <img:CustomImage
+                x:Name="imgIcon"
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="10"
+                Aspect="AspectFill"
+                TouchAction="Handle_TouchAction" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

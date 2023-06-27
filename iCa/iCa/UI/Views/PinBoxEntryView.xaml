@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="UI.PinBoxEntryView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:ui="clr-namespace:UI">
+    <StackLayout
+        x:Name="spnlMain"
+        HeightRequest="{ui:OnScreenSize DefaultSize={x:Static app:Dimens.ButtonHeight},
+                                        ExtraSmall={x:Static app:Dimens.ButtonHeightExtraSmall},
+                                        Small={x:Static app:Dimens.ButtonHeightSmall}}"
+        HorizontalOptions="{OnIdiom Phone='FillAndExpand',
+                                    Tablet='CenterAndExpand'}"
+        MinimumWidthRequest="{x:Static app:Dimens.ButtonWidth}"
+        Orientation="Horizontal"
+        VerticalOptions="CenterAndExpand"
+        WidthRequest="{x:Static app:Dimens.ButtonWidth}" />
+</ContentView>

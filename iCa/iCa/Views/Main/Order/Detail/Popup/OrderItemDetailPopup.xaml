@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage
+    x:Class="iCa.Views.Main.Order.Detail.Popup.OrderItemDetailPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    xmlns:ui="clr-namespace:UI"
+    Style="{StaticResource BackgroundClickPopup}">
+    <rv:MaterialFrame Style="{StaticResource EntryPopup}">
+        <ScrollView>
+            <StackLayout
+                x:Name="spnlMain"
+                Margin="10"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+        </ScrollView>
+    </rv:MaterialFrame>
+</pages:PopupPage>

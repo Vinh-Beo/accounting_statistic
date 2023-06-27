@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<rv:MaterialFrame
+    x:Class="UI.SearchBarView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+    x:Name="root"
+    Padding="0"
+    AcrylicGlowColor="Transparent"
+    Style="{StaticResource SmallFrame}">
+    <SearchBar
+        x:Name="SearchBar"
+        Focused="SearchBar_Focused"
+        Placeholder="{Binding Placeholder, Source={x:Reference root}}"
+        PlaceholderColor="{AppThemeBinding Default={x:Static app:AppColors.TextPrimaryNormalColor},
+                                           Light={x:Static app:AppColors.TextPrimaryNormalColor},
+                                           Dark={x:Static app:AppColors.TextPrimaryNormalDarkColor}}"
+        SearchCommand="{Binding SearchCommand, Source={x:Reference root}}"
+        SearchCommandParameter="{Binding SearchCommandParameter, Source={x:Reference root}}"
+        Style="{StaticResource PrimarySearchBar}"
+        Text="{Binding Text, Source={x:Reference root}}"
+        TextChanged="Handle_TextChanged"
+        Unfocused="SearchBar_Unfocused" />
+</rv:MaterialFrame>
