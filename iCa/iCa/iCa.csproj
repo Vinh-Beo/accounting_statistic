@@ -190,6 +190,7 @@
     <None Remove="Resources\Icons\ic_school.svg" />
     <None Remove="Resources\Icons\ic_search.svg" />
     <None Remove="Resources\Icons\ic_server.svg" />
+    <None Remove="Resources\Icons\ic_sheet.svg" />
     <None Remove="Resources\Icons\ic_shield.svg" />
     <None Remove="Resources\Icons\ic_shield_lock.svg" />
     <None Remove="Resources\Icons\ic_shield_off.svg" />
@@ -424,6 +425,7 @@
     <EmbeddedResource Include="Resources\Icons\ic_school.svg" />
     <EmbeddedResource Include="Resources\Icons\ic_search.svg" />
     <EmbeddedResource Include="Resources\Icons\ic_server.svg" />
+    <EmbeddedResource Include="Resources\Icons\ic_sheet.svg" />
     <EmbeddedResource Include="Resources\Icons\ic_shield.svg" />
     <EmbeddedResource Include="Resources\Icons\ic_shield_lock.svg" />
     <EmbeddedResource Include="Resources\Icons\ic_shield_off.svg" />
@@ -522,7 +524,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Auth\StartupPage.xaml">
+    <EmbeddedResource Update="Views\Auth\Startup\StartupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Common\AlertDialogPopup.xaml">

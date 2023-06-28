@@ -23,9 +23,8 @@
                     VerticalOptions="FillAndExpand">
                     <Image
                         Grid.Column="0"
-                        BackgroundColor="Red"
                         HorizontalOptions="Start"
-                        Source="{Binding Image, Converter={StaticResource Base64StringToImageSourceConverter}}"
+                        Source="fish_bowl.png"
                         Style="{StaticResource CircleImage}"
                         VerticalOptions="CenterAndExpand" />
                     <StackLayout

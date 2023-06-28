@@ -149,6 +149,12 @@
     <value>SL mặt hàng</value>
   </data>
   <data name="SaveToSheet" xml:space="preserve">
-    <value>Save to sheet</value>
+    <value>Lưu vào sheet</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Bắt đầu</value>
+  </data>
+  <data name="WelcomeToICa" xml:space="preserve">
+    <value>Chào mừng bạn đến với iCa</value>
   </data>
 </root>

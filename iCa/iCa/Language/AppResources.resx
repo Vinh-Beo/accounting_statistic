@@ -149,6 +149,12 @@
     <value>Order numbers</value>
   </data>
   <data name="SaveToSheet" xml:space="preserve">
-    <value>Lưu vào sheet</value>
+    <value>Save to sheet</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="WelcomeToICa" xml:space="preserve">
+    <value>Welcome to iCa</value>
   </data>
 </root>

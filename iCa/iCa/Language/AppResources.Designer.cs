@@ -178,7 +178,7 @@ namespace iCa.Language {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lưu vào sheet.
+        ///   Looks up a localized string similar to Save to sheet.
         /// </summary>
         internal static string SaveToSheet {
             get {
@@ -192,6 +192,15 @@ namespace iCa.Language {
         internal static string SomethingWrong {
             get {
                 return ResourceManager.GetString("SomethingWrong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        internal static string Start {
+            get {
+                return ResourceManager.GetString("Start", resourceCulture);
             }
         }
         
@@ -219,6 +228,15 @@ namespace iCa.Language {
         internal static string Weight {
             get {
                 return ResourceManager.GetString("Weight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to iCa.
+        /// </summary>
+        internal static string WelcomeToICa {
+            get {
+                return ResourceManager.GetString("WelcomeToICa", resourceCulture);
             }
         }
     }

@@ -26,6 +26,7 @@ namespace iCa
                 IsBusy = false,
                 ResponseOK = true,
                 ResponseMessage = "",
+                IsStart = true,
                 Orders = new ObservableCollection<OrderModel>()
                 {
                     //new OrderModel()

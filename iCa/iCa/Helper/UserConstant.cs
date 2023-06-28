@@ -17,7 +17,7 @@ namespace Common
         public const string NoExist = "NoExist";
         public const string Exist = "Exist";
         public const string WeightUnit = "KG";
-        public const string Spreadsheet_id = "1LD84tP2j89ONeKE28LnfJ4AP9-bflScysgcH49hyCfk";
+        public const string Spreadsheet_id = "1akX44a9ztYJ96AzILUuFyCvB1cGr2gC3EQYwl4fw0dE";
 
         public const int SmallUIDelayMs = 10;
         public const int DelayCanView = 1500;

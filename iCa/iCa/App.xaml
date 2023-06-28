@@ -20,6 +20,8 @@
         <cv:TypeToDisplaySetAlertStringConverter x:Key="TypeToDisplaySetAlertStringConverter" />
         <cv:TypeToDisplaySetAlertColorConverter x:Key="TypeToDisplaySetAlertColorConverter" />
         <cv:TypeToDisplaySetAlertIconConverter x:Key="TypeToDisplaySetAlertIconConverter" />
+        <cv:IntToToggleVisibleConverter x:Key="IntToToggleVisibleConverter" />
+        <cv:IntToVisibleConverter x:Key="IntToVisibleConverter" />
         <!--  Button  -->
         <Style
             x:Key="ThemeRoundButton"

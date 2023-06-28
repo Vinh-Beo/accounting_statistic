@@ -37,6 +37,65 @@ namespace iCa.Views.Main.Order
             InitializeComponent();
             this.BindingContext = _vm as OrdersViewModel;
 
+
+            _vm.DisplExportExportToSheet += new Action<ObservableCollection<OrderDetailModel>>(async(_orders) =>
+            {
+                if (PopupNavigation.Instance.PopupStack.Count > 0)
+                {
+                    await _vm.AppNavigator.PopAllAsync(true);
+                }
+                CreateSheetNameViewModel _vmSheet = new CreateSheetNameViewModel()
+                {
+                    IsBusy = false,
+                    ResponseOK = true,
+                    ResponseMessage = "",
+                    Name = "",
+                };
+
+                CreateSheetNamePopup _pSheet = new CreateSheetNamePopup()
+                {
+                    BindingContext = _vmSheet
+                };
+                await _vm.AppNavigator.PushAsync(_pSheet);
+
+                _vmSheet.DisplOK += new Action<string>(async (_name) =>
+                {
+                    if (PopupNavigation.Instance.PopupStack.Count > 0)
+                    {
+                        await _vm.AppNavigator.PopAllAsync(true);
+                    }
+                    ConfirmFillDataToSheetViewModel _vmConfirm = new ConfirmFillDataToSheetViewModel()
+                    {
+                        IsBusy = false,
+                        ResponseOK = true,
+                        ResponseMessage = "",
+                        SheetName = _name,
+                        Details = new ObservableCollection<OrderDetailModel>(_orders),
+                        Message = AppResources.FillDataTo + " " + _name
+                    };
+                    ConfirmFillDataToSheetPopup _pConfirm = new ConfirmFillDataToSheetPopup()
+                    {
+                        BindingContext = _vmConfirm
+                    };
+
+                    await _vm.AppNavigator.PushAsync(_pConfirm);
+
+                    _vmConfirm.DisplClose += new Action(async () =>
+                    {
+                        if (PopupNavigation.Instance.PopupStack.Count > 0)
+                        {
+                            await _vm.AppNavigator.PopAllAsync(true);
+                        }
+                    });
+                });
+                _vmSheet.DisplBack += new Action(async () =>
+                {
+                    if (PopupNavigation.Instance.PopupStack.Count > 0)
+                    {
+                        await _vm.AppNavigator.PopAllAsync(true);
+                    }
+                });
+            });
             _vm.DisplAdd += new Action(async () =>
             {
                 if (PopupNavigation.Instance.PopupStack.Count > 0)

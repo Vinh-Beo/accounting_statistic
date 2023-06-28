@@ -4,8 +4,10 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:app="clr-namespace:Utils"
+    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     xmlns:img="clr-namespace:CustomControl"
     xmlns:item="clr-namespace:iCa.Views.Main.Item"
+    xmlns:lang="clr-namespace:Language"
     xmlns:local="clr-namespace:iCa.ViewModels"
     xmlns:model="clr-namespace:iCa.Models"
     xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
@@ -29,7 +31,9 @@
             Refreshing="Handle_Refresh">
             <StackLayout>
                 <!--  Header  -->
-                <Grid ColumnDefinitions="*,Auto">
+                <Grid
+                    ColumnDefinitions="*,Auto"
+                    IsVisible="{Binding IsStart, Converter={StaticResource ToggleBoolConverter}}">
                     <ui:IconSvg
                         Margin="5,0"
                         Command="{Binding DeleteAllCmd}"
@@ -42,8 +46,8 @@
                         HorizontalOptions="End"
                         Orientation="Horizontal">
                         <ui:IconSvg
-                            Command="{Binding SaveCmd}"
-                            ResourceId="ic_save.svg"
+                            Command="{Binding ExportToSheetCmd}"
+                            ResourceId="ic_sheet.svg"
                             Style="{StaticResource ThemeSmallIcon32}" />
                         <ui:IconSvg
                             Command="{Binding DetailCmd}"
@@ -65,6 +69,7 @@
                         HorizontalOptions="Center">
                         <ListView
                             IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                            IsVisible="{Binding IsStart, Converter={StaticResource ToggleBoolConverter}}"
                             ItemSelected="Handle_Selected"
                             ItemsSource="{Binding Orders}"
                             SeparatorColor="Transparent"
@@ -161,12 +166,37 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
+                        <StackLayout
+                            Margin="0,100,0,0"
+                            IsVisible="{Binding IsStart}">
+                            <Label
+                                HorizontalTextAlignment="Center"
+                                LineBreakMode="WordWrap"
+                                Style="{StaticResource HeaderLabel}"
+                                Text="{lang:Translate WelcomeToICa}" />
+                            <forms:AnimationView
+                                Animation="say_hi.json"
+                                AnimationSource="AssetOrBundle"
+                                AutoPlay="True"
+                                HeightRequest="300"
+                                HorizontalOptions="FillAndExpand"
+                                RepeatMode="Infinite"
+                                VerticalOptions="FillAndExpand"
+                                WidthRequest="300" />
+                            <Button
+                                Margin="10"
+                                Command="{Binding StartCmd}"
+                                IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                                Style="{StaticResource PrimaryRoundButton}"
+                                Text="{lang:Translate Start}" />
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
                 <Button
                     Margin="10"
                     Command="{Binding TotalCmd}"
                     IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                    IsVisible="{Binding IsStart, Converter={StaticResource ToggleBoolConverter}}"
                     Style="{StaticResource PrimaryRoundButton}"
                     Text="{Binding Total, StringFormat='{0} đ'}" />
             </StackLayout>

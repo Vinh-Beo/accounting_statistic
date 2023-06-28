@@ -46,17 +46,42 @@ namespace iCa.ViewModels.Main.Order
 
         private double _Total;
         public double Total { get => _Total; set { _Total = value; OnPropertyChanged("Total"); } }
+
+        private bool _IsStart;
+        public bool IsStart { get => _IsStart; set { _IsStart = value; OnPropertyChanged("IsStart"); } }
         #endregion
 
-        
+
         #region Cmd
-        public ICommand SaveCmd
+        public Action<ObservableCollection<OrderDetailModel>> DisplExportExportToSheet;
+        public ICommand ExportToSheetCmd
         {
             get
             {
-                return new RelayCommand(new Action(async() =>
+                return new RelayCommand(new Action(() =>
                 {
-                    
+                    ObservableCollection<OrderDetailModel> _lst = new ObservableCollection<OrderDetailModel>();
+                    foreach (OrderModel item in Orders)
+                    {
+                        _lst.Add(new OrderDetailModel()
+                        {
+                            Title = item.Name,
+                            Weight = item.Weight,
+                            Price = item.Price,
+                            Total = item.Total
+                        });
+                    }
+                    DisplExportExportToSheet?.Invoke(_lst);
+                }));
+            }
+        }
+        public ICommand StartCmd
+        {
+            get
+            {
+                return new RelayCommand(new Action(() =>
+                {
+                    IsStart = false;   
                 }));
             }
         }
