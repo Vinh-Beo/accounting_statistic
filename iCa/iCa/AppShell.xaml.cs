@@ -67,13 +67,13 @@ namespace iCa
                     //},
                 }
             };
-            Task.Factory.StartNew(async () =>
+            foreach (OrderModel _order in _vm.Orders)
             {
-                foreach (OrderModel _order in _vm.Orders)
-                {
-                    _order.Total = double.Parse(_order.Weight) * double.Parse(_order.Price);
-                }
+                _order.Total = double.Parse(_order.Weight) * double.Parse(_order.Price);
+            }
 
+            Device.BeginInvokeOnMainThread(async () =>
+            {
                 OrdersPage _p = new OrdersPage(_vm);
                 await _vm.AppNavigator.NavigateAsync(_p);
             });

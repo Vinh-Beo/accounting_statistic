@@ -30,12 +30,12 @@ namespace iCa.Views.Main.Order
     {
         public OrdersPage()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
         public OrdersPage(OrdersViewModel _vm)
         {
             InitializeComponent();
-            this.BindingContext = _vm as OrdersViewModel;
+           this.BindingContext = _vm as OrdersViewModel;
 
 
             _vm.DisplExportExportToSheet += new Action<ObservableCollection<OrderDetailModel>>(async(_orders) =>

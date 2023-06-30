@@ -43,22 +43,22 @@ namespace Common
             }
             return deviceScreenSize;
         }
-        public static void InitializeSheetService(bool _isDarkMode)
+        public static void InitializeSheetService(bool _isIsDarkMode)
         {
             
         }
-        //public static void SetDarkMode(bool _isDarkMode)
-        //{
-        //    Common.Settings.DarkMode = _isDarkMode;
-        //    if (!Common.Settings.DarkMode)
-        //    {
-        //        Application.Current.UserAppTheme = OSAppTheme.Light;
-        //    }
-        //    else
-        //    {
-        //        Application.Current.UserAppTheme = OSAppTheme.Dark;
-        //    }
-        //}
+        public static void SetDarkMode(bool _isIsDarkMode)
+        {
+            Common.Settings.IsDarkMode = _isIsDarkMode;
+            if (!Common.Settings.IsDarkMode)
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Light;
+            }
+            else
+            {
+                Application.Current.UserAppTheme = OSAppTheme.Dark;
+            }
+        }
     }
     public class DeviceInfo
     {

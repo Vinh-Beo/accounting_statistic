@@ -5,14 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:app="clr-namespace:Utils"
     xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-    xmlns:img="clr-namespace:CustomControl"
     xmlns:item="clr-namespace:iCa.Views.Main.Item"
     xmlns:lang="clr-namespace:Language"
-    xmlns:local="clr-namespace:iCa.ViewModels"
-    xmlns:model="clr-namespace:iCa.Models"
     xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
     xmlns:ui="clr-namespace:UI"
-    Shell.FlyoutBehavior="Disabled"
     Style="{StaticResource BasePage}">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -168,13 +164,14 @@
                         </ListView>
                         <StackLayout
                             Margin="0,100,0,0"
-                            IsVisible="{Binding IsStart}">
+                            IsVisible="{Binding IsStart}"
+                            VerticalOptions="Center">
                             <Label
                                 HorizontalTextAlignment="Center"
                                 LineBreakMode="WordWrap"
                                 Style="{StaticResource HeaderLabel}"
                                 Text="{lang:Translate WelcomeToICa}" />
-                            <forms:AnimationView
+                            <!--<forms:AnimationView
                                 Animation="say_hi.json"
                                 AnimationSource="AssetOrBundle"
                                 AutoPlay="True"
@@ -182,7 +179,18 @@
                                 HorizontalOptions="FillAndExpand"
                                 RepeatMode="Infinite"
                                 VerticalOptions="FillAndExpand"
-                                WidthRequest="300" />
+                                WidthRequest="300">
+                                <forms:AnimationView.IsVisible>
+                                    <OnPlatform x:TypeArguments="x:Boolean">
+                                        <On
+                                            Platform="Android"
+                                            Value="True" />
+                                        <On
+                                            Platform="iOS"
+                                            Value="False" />
+                                    </OnPlatform>
+                                </forms:AnimationView.IsVisible>
+                            </forms:AnimationView>-->
                             <Button
                                 Margin="10"
                                 Command="{Binding StartCmd}"

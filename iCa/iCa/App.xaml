@@ -6,6 +6,7 @@
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
     xmlns:app="clr-namespace:Utils"
     xmlns:cv="clr-namespace:Converter"
+    xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
     xmlns:ui="clr-namespace:UI">
@@ -388,6 +389,7 @@
         <Style
             x:Key="BasePage"
             TargetType="ContentPage">
+            <Setter Property="iOS:Page.UseSafeArea" Value="True" />
             <Setter Property="BackgroundImageSource" Value="{AppThemeBinding Light='lightbg.jpg', Dark='darkbg.jpg', Default='lightbg.jpg'}" />
             <Setter Property="Shell.PresentationMode" Value="Modal" />
             <Setter Property="Shell.NavBarIsVisible" Value="False" />
@@ -396,6 +398,7 @@
         <Style
             x:Key="NoImageBackgroundPage"
             TargetType="ContentPage">
+            <Setter Property="iOS:Page.UseSafeArea" Value="True" />
             <Setter Property="Shell.PresentationMode" Value="Modal" />
             <Setter Property="Shell.NavBarIsVisible" Value="False" />
             <Setter Property="BackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.BackgroundLightColor}, Light={x:Static app:AppColors.BackgroundLightColor}, Dark={x:Static app:AppColors.BackgroundDarkColor}}" />
@@ -725,6 +728,13 @@
             <Setter Property="FontFamily" Value="BoldFont" />
             <Setter Property="FontSize" Value="Small" />
             <Setter Property="TextColor" Value="{AppThemeBinding Light={x:Static app:AppColors.TextDatePickerColor}, Dark={x:Static app:AppColors.TextDatePickerDarkColor}, Default={x:Static app:AppColors.TextDatePickerColor}}" />
+        </Style>
+        <!--  Shell  -->
+        <Style
+            x:Key="ShellPage"
+            TargetType="Shell">
+            <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.BackgroundLightColor}, Light={x:Static app:AppColors.BackgroundLightColor}, Dark={x:Static app:AppColors.BackgroundDarkColor}}" />
+            <Setter Property="Shell.FlyoutBehavior" Value="Disabled" />
         </Style>
     </Application.Resources>
 </Application>
