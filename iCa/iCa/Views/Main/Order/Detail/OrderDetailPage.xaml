@@ -6,9 +6,9 @@
     xmlns:app="clr-namespace:Utils"
     xmlns:img="clr-namespace:CustomControl"
     xmlns:item="clr-namespace:iCa.Views.Main.Item"
+    xmlns:lang="clr-namespace:Language"
     xmlns:local="clr-namespace:iCa.ViewModels"
     xmlns:model="clr-namespace:iCa.Models"
-    xmlns:lang="clr-namespace:Language"
     xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
     xmlns:ui="clr-namespace:UI"
     Shell.FlyoutBehavior="Disabled"
@@ -149,7 +149,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Button
-                    Margin="10"
+                    Margin="0,10"
                     Command="{Binding SaveCmd}"
                     IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
                     Style="{StaticResource PrimaryRoundButton}"

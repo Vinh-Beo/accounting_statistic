@@ -66,98 +66,115 @@
                         <ListView
                             IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
                             IsVisible="{Binding IsStart, Converter={StaticResource ToggleBoolConverter}}"
-                            ItemSelected="Handle_Selected"
                             ItemsSource="{Binding Orders}"
+                            SelectionMode="None"
                             SeparatorColor="Transparent"
                             Style="{StaticResource PrimaryListView}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <ViewCell>
-                                        <Grid Padding="0">
-                                            <rv:MaterialFrame
-                                                x:Name="spnlMain"
-                                                Margin="3"
-                                                Padding="10"
-                                                AcrylicGlowColor="Transparent"
-                                                CornerRadius="15"
-                                                HorizontalOptions="FillAndExpand"
-                                                Style="{StaticResource BaseFrame}">
-                                                <Grid
-                                                    ColumnDefinitions="3*,7*"
+                                        <SwipeView>
+                                            <SwipeView.RightItems>
+                                                <SwipeItems>
+                                                    <SwipeItem
+                                                        BackgroundColor="{x:Static app:AppColors.RedColor}"
+                                                        Command="{Binding DeleteCmd}"
+                                                        IconImageSource="delete.png"
+                                                        Text="{lang:Translate Edit}" />
+                                                    <SwipeItem
+                                                        BackgroundColor="{x:Static app:AppColors.GreenColor}"
+                                                        Command="{Binding EditCmd}"
+                                                        IconImageSource="favorite.png"
+                                                        Text="{lang:Translate Edit}" />
+                                                </SwipeItems>
+                                            </SwipeView.RightItems>
+                                            <!--  Content  -->
+                                            <Grid Padding="0">
+                                                <rv:MaterialFrame
+                                                    x:Name="spnlMain"
+                                                    Margin="3"
+                                                    Padding="10"
+                                                    AcrylicGlowColor="Transparent"
+                                                    CornerRadius="15"
                                                     HorizontalOptions="FillAndExpand"
-                                                    VerticalOptions="FillAndExpand">
-                                                    <Image
-                                                        Grid.Column="0"
-                                                        HorizontalOptions="Start"
-                                                        Source="fish_bowl.png"
-                                                        Style="{StaticResource CircleImage}"
-                                                        VerticalOptions="CenterAndExpand" />
-                                                    <StackLayout
-                                                        Grid.Column="1"
-                                                        Margin="10,0"
-                                                        HorizontalOptions="FillAndExpand">
-                                                        <Grid ColumnDefinitions="*,*">
-                                                            <Label
-                                                                Grid.Column="0"
-                                                                HorizontalOptions="StartAndExpand"
-                                                                HorizontalTextAlignment="Start"
-                                                                LineBreakMode="WordWrap"
-                                                                Style="{StaticResource TitleLabel}"
-                                                                Text="{Binding Name}"
-                                                                TextColor="{AppThemeBinding Default='Black',
-                                                                                            Light='Black',
-                                                                                            Dark='White'}" />
-                                                            <Label
-                                                                Grid.Column="1"
-                                                                FontFamily="ItalicFont"
-                                                                HorizontalOptions="EndAndExpand"
-                                                                HorizontalTextAlignment="Center"
-                                                                Style="{StaticResource NormalLabel}"
-                                                                Text="{Binding CreateTime, StringFormat='{}{0:dd/MM/yyyy}'}" />
-                                                        </Grid>
-                                                        <StackLayout Orientation="Horizontal">
-                                                            <ui:IconSvg
-                                                                ResourceId="ic_kilogram.svg"
-                                                                Style="{StaticResource ThemeSmallIcon}"
-                                                                TintColor="{x:Static app:AppColors.OrangeColor}" />
-                                                            <Label
-                                                                HorizontalOptions="StartAndExpand"
-                                                                LineBreakMode="NoWrap"
-                                                                Style="{DynamicResource NormalLabel}"
-                                                                Text="{Binding Weight}" />
-                                                        </StackLayout>
-                                                        <Grid
-                                                            ColumnDefinitions="*,*"
-                                                            Style="{StaticResource ButtonGrid}">
-                                                            <StackLayout
-                                                                Grid.Column="0"
-                                                                Orientation="Horizontal">
+                                                    Style="{StaticResource BaseFrame}">
+                                                    <Grid
+                                                        ColumnDefinitions="3*,7*"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        VerticalOptions="FillAndExpand">
+                                                        <Image
+                                                            Grid.Column="0"
+                                                            HorizontalOptions="Start"
+                                                            Source="fish_bowl.png"
+                                                            Style="{StaticResource CircleImage}"
+                                                            VerticalOptions="CenterAndExpand" />
+                                                        <StackLayout
+                                                            Grid.Column="1"
+                                                            Margin="10,0"
+                                                            HorizontalOptions="FillAndExpand">
+                                                            <Grid ColumnDefinitions="*,*">
+                                                                <Label
+                                                                    Grid.Column="0"
+                                                                    HorizontalOptions="StartAndExpand"
+                                                                    HorizontalTextAlignment="Start"
+                                                                    LineBreakMode="WordWrap"
+                                                                    Style="{StaticResource TitleLabel}"
+                                                                    Text="{Binding Name}"
+                                                                    TextColor="{AppThemeBinding Default='Black',
+                                                                                                Light='Black',
+                                                                                                Dark='White'}" />
+                                                                <Label
+                                                                    Grid.Column="1"
+                                                                    FontFamily="ItalicFont"
+                                                                    HorizontalOptions="EndAndExpand"
+                                                                    HorizontalTextAlignment="Center"
+                                                                    Style="{StaticResource NormalLabel}"
+                                                                    Text="{Binding CreateTime, StringFormat='{}{0:dd/MM/yyyy}'}" />
+                                                            </Grid>
+                                                            <StackLayout Orientation="Horizontal">
                                                                 <ui:IconSvg
-                                                                    ResourceId="ic_usd.svg"
+                                                                    ResourceId="ic_kilogram.svg"
                                                                     Style="{StaticResource ThemeSmallIcon}"
                                                                     TintColor="{x:Static app:AppColors.OrangeColor}" />
                                                                 <Label
                                                                     HorizontalOptions="StartAndExpand"
                                                                     LineBreakMode="NoWrap"
                                                                     Style="{DynamicResource NormalLabel}"
-                                                                    Text="{Binding Price}" />
+                                                                    Text="{Binding Weight}" />
                                                             </StackLayout>
-                                                            <Frame
-                                                                Grid.Column="1"
-                                                                BackgroundColor="{x:Static app:AppColors.PrimaryColor}"
-                                                                Style="{StaticResource SmallEntryFrame}">
-                                                                <Label
-                                                                    HorizontalTextAlignment="Center"
-                                                                    LineBreakMode="NoWrap"
-                                                                    Style="{StaticResource TitleLabel}"
-                                                                    Text="{Binding Total, StringFormat='{0} đ'}"
-                                                                    TextColor="{x:Static app:AppColors.WhiteColor}" />
-                                                            </Frame>
-                                                        </Grid>
-                                                    </StackLayout>
-                                                </Grid>
-                                            </rv:MaterialFrame>
-                                        </Grid>
+                                                            <Grid
+                                                                ColumnDefinitions="*,*"
+                                                                Style="{StaticResource ButtonGrid}">
+                                                                <StackLayout
+                                                                    Grid.Column="0"
+                                                                    Orientation="Horizontal">
+                                                                    <ui:IconSvg
+                                                                        ResourceId="ic_usd.svg"
+                                                                        Style="{StaticResource ThemeSmallIcon}"
+                                                                        TintColor="{x:Static app:AppColors.OrangeColor}" />
+                                                                    <Label
+                                                                        HorizontalOptions="StartAndExpand"
+                                                                        LineBreakMode="NoWrap"
+                                                                        Style="{DynamicResource NormalLabel}"
+                                                                        Text="{Binding Price}" />
+                                                                </StackLayout>
+                                                                <Frame
+                                                                    Grid.Column="1"
+                                                                    BackgroundColor="{x:Static app:AppColors.PrimaryColor}"
+                                                                    Style="{StaticResource SmallEntryFrame}">
+                                                                    <Label
+                                                                        HorizontalTextAlignment="Center"
+                                                                        LineBreakMode="NoWrap"
+                                                                        Style="{StaticResource TitleLabel}"
+                                                                        Text="{Binding Total, StringFormat='{0} đ'}"
+                                                                        TextColor="{x:Static app:AppColors.WhiteColor}" />
+                                                                </Frame>
+                                                            </Grid>
+                                                        </StackLayout>
+                                                    </Grid>
+                                                </rv:MaterialFrame>
+                                            </Grid>
+                                        </SwipeView>
                                     </ViewCell>
                                 </DataTemplate>
                             </ListView.ItemTemplate>

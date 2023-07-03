@@ -8,53 +8,63 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
     xmlns:ui="clr-namespace:UI"
-    Style="{StaticResource BackgroundClickPopup}">
-    <Grid VerticalOptions="CenterAndExpand">
-        <Frame Style="{StaticResource AlertFrame}">
-            <StackLayout Margin="10,10,10,-10">
-                <Label
-                    FontFamily="BoldFont"
-                    FontSize="20"
-                    HorizontalOptions="CenterAndExpand"
-                    Style="{StaticResource NormalLabel}"
-                    Text="{lang:Translate Warning}"
-                    TextColor="{x:Static app:AppColors.IconYellowColor}" />
-                <Label
-                    HorizontalOptions="CenterAndExpand"
-                    HorizontalTextAlignment="Center"
-                    LineBreakMode="WordWrap"
-                    Style="{StaticResource NormalLabel}"
-                    Text="{Binding Message}" />
-                <Grid
-                    ColumnDefinitions="*,Auto,*"
-                    Style="{StaticResource ButtonGrid}">
-                    <Button
-                        Grid.Column="0"
-                        Command="{Binding OKCmd}"
-                        IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
-                        Style="{StaticResource PrimaryTransparentButton}"
-                        Text="{lang:Translate OK}" />
-                    <StackLayout
-                        Grid.Column="1"
-                        Style="{StaticResource VerticalSeparator}" />
-                    <Button
-                        Grid.Column="2"
-                        Command="{Binding CancelCmd}"
-                        Style="{StaticResource PrimaryTransparentWithTextColorButton}"
-                        Text="{lang:Translate Cancel}" />
-                </Grid>
-            </StackLayout>
-        </Frame>
-        <StackLayout HorizontalOptions="Center">
-            <Frame Style="{StaticResource Frame40}">
-                <StackLayout>
+    Style="{StaticResource NoBackgroundClickPopup}">
+    <rv:MaterialFrame Style="{StaticResource EntryPopup}">
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Center">
+            <Grid
+                ColumnDefinitions="*,*"
+                HorizontalOptions="FillAndExpand">
+                <StackLayout
+                    Grid.Column="0"
+                    Orientation="Horizontal">
                     <ui:IconSvg
                         ResourceId="ic_alert.svg"
-                        Style="{StaticResource SmallIcon40}"
+                        Style="{StaticResource SmallIcon}"
                         TintColor="{x:Static app:AppColors.IconYellowColor}"
                         VerticalOptions="Start" />
+                    <Label
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabel}"
+                        Text="{lang:Translate Warning}" />
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        Style="{StaticResource Indicator16}" />
                 </StackLayout>
-            </Frame>
+            </Grid>
+            <!--  Main view  -->
+            <Label
+                HorizontalOptions="StartAndExpand"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="WordWrap"
+                Style="{StaticResource NormalLabel}"
+                Text="{Binding Message}" />
+            <Label
+                HorizontalOptions="StartAndExpand"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="WordWrap"
+                Style="{StaticResource ResponseMessageLabel}"
+                Text="{Binding ResponseMessage}" />
+            <Grid
+                ColumnDefinitions="*,Auto,*"
+                Style="{StaticResource ButtonGrid}">
+                <Button
+                    Grid.Column="0"
+                    Command="{Binding OKCmd}"
+                    IsEnabled="{Binding IsBusy, Converter={StaticResource ToggleBoolConverter}}"
+                    Style="{StaticResource PrimaryTransparentButton}"
+                    Text="Đồng ý" />
+                <StackLayout
+                    Grid.Column="1"
+                    Style="{StaticResource VerticalSeparator}" />
+                <Button
+                    Grid.Column="2"
+                    Command="{Binding CancelCmd}"
+                    Style="{StaticResource PrimaryTransparentWithTextColorButton}"
+                    Text="Hủy" />
+            </Grid>
         </StackLayout>
-    </Grid>
+    </rv:MaterialFrame>
 </pages:PopupPage>

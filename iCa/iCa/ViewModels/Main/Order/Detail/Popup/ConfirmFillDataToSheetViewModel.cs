@@ -46,26 +46,26 @@ namespace iCa.ViewModels.Main.Order.Detail.Popup
                     IsBusy = true;
                     ResponseOK = true;
                     ResponseMessage = "";
+                    bool _response = false;
+                    SpreadsheetsResource _sheetService = FormBase.Service.Spreadsheets;
                     try
                     {
                         await Task.Factory.StartNew(() =>
                         {
                             // Create title
-                            SpreadsheetsResource.ValuesResource _googleSheetValues = FormBase.Service.Spreadsheets.Values;
                             var range = $"{SheetName}!A1:M";
-
                             var valueRange = new ValueRange
                             {
                                 Values = ItemsMapper.CreateTitle()
                             };
 
-                            var appendRequest = _googleSheetValues.Append(valueRange, UserConstant.Spreadsheet_id, range);
+                            var appendRequest = _sheetService.Values.Append(valueRange, UserConstant.Spreadsheet_id, range);
                             appendRequest.ValueInputOption = AppendRequest.ValueInputOptionEnum.USERENTERED;
                             appendRequest.Execute();
 
 
                             // Fill data
-                            var rangeData = $"{SheetName}!A1:M";
+                            var rangeData = $"{SheetName}!A2:M";
                             int _cnt = 0;
                             foreach (OrderDetailModel _order in Details)
                             {
@@ -74,19 +74,27 @@ namespace iCa.ViewModels.Main.Order.Detail.Popup
                                 {
                                     Values = ItemsMapper.MapToRangeData(_order, _cnt)
                                 };
-                                appendRequest = _googleSheetValues.Append(valueRangeData, UserConstant.Spreadsheet_id, rangeData);
+                                appendRequest = _sheetService.Values.Append(valueRangeData, UserConstant.Spreadsheet_id, rangeData);
                                 appendRequest.ValueInputOption = AppendRequest.ValueInputOptionEnum.USERENTERED;
                                 appendRequest.Execute();
                             }
+                            _response = true;
                         });
                     }
                     catch (Exception e)
                     {
+                        _response = false;
                         ResponseOK = false;
                         ResponseMessage = e.ToString();
                         return;
                     }
                     IsBusy = false;
+                    if (!_response)
+                    {
+                        ResponseOK = false;
+                        ResponseMessage = AppResources.Error;
+                        return;
+                    }
                     ResponseOK = true;
                     ResponseMessage = AppResources.Success;
                     DisplClose?.Invoke();

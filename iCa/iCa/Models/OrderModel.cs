@@ -23,19 +23,25 @@ namespace iCa.Models
         private DateTime _CreateTime;
         public DateTime CreateTime { get => _CreateTime; set { _CreateTime = value; OnPropertyChanged("CreateTime"); } }
         #region Cmd
-        public Action<OrderModel> DisplSel;
-        public ICommand MenuCmd
+        public Action DisplDelete;
+        public ICommand DeleteCmd
         {
             get
             {
-                return new RelayCommand<object>(new Action<object>((obj) =>
+                return new RelayCommand(new Action(() =>
                 {
-                    if (obj == null)
-                    {
-                        return;
-                    }
-                    OrderModel _order = obj as OrderModel;
-                    DisplSel?.Invoke(_order);
+                    DisplDelete?.Invoke();
+                }));
+            }
+        }
+        public Action DisplEdit;
+        public ICommand EditCmd
+        {
+            get
+            {
+                return new RelayCommand(new Action(() =>
+                {
+                    DisplEdit?.Invoke();
                 }));
             }
         }
