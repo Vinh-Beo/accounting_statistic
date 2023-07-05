@@ -23,7 +23,7 @@ namespace iCa.Views.Main.Order.Detail
         {
             InitializeComponent();
             BindingContext = _vm;
-            _vm.DisplBack += new Action(() =>
+            _vm.DisplBack = new Action(() =>
             {
                 _vm.AppNavigator.GoBackAsync(true);
             });

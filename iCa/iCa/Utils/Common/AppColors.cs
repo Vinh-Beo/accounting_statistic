@@ -20,6 +20,8 @@ namespace Utils
         public static readonly Color PrimaryDarkColor = Color.White;
         public static readonly Color WhiteColor = Color.White;
         public static readonly Color BlackColor = Color.Black;
+        public static readonly Color LightPinkColor = Color.FromHex("#FF9B9B"); 
+        public static readonly Color LightGreenColor = Color.FromHex("#CBFFA9"); 
 
 
         public static readonly Color OrangeColor = Color.FromHex("#F16F28");

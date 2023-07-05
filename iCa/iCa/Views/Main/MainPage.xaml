@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage
+    x:Class="iCa.Views.Main.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:app="clr-namespace:Utils"
+    xmlns:history="clr-namespace:iCa.Views.Main.History"
+    xmlns:home="clr-namespace:iCa.Views.Main.Home"
+    xmlns:lang="clr-namespace:Language"
+    xmlns:noti="clr-namespace:iCa.Views.Main.Notification"
+    xmlns:order="clr-namespace:iCa.Views.Main.Order"
+    xmlns:setting="clr-namespace:iCa.Views.Main.Setting"
+    xmlns:vmOrder="clr-namespace:iCa.ViewModels.Main.Order"
+    CurrentPageChanged="TabbedPage_CurrentPageChanged"
+    Style="{StaticResource TabPage}">
+    <TabbedPage.Children>
+        <ContentPage
+            x:Name="tpHome"
+            Title="{lang:Translate Home}"
+            BackgroundImageSource="WhiteSmoke"
+            IconImageSource="ic_home.png">
+            <home:HomePage />
+        </ContentPage>
+        <ContentPage
+            x:Name="tpOrders"
+            Title="{lang:Translate Order}"
+            BackgroundImageSource="WhiteSmoke"
+            IconImageSource="ic_cart.png">
+            <order:OrderPage BindingContext="{Binding Order}" />
+        </ContentPage>
+        <ContentPage
+            x:Name="tpHistory"
+            Title="{lang:Translate History}"
+            BackgroundImageSource="WhiteSmoke"
+            IconImageSource="ic_history.png">
+            <history:HistoryPage />
+        </ContentPage>
+        <ContentPage
+            x:Name="tpNotìy"
+            Title="{lang:Translate Notification}"
+            BackgroundImageSource="WhiteSmoke"
+            IconImageSource="ic_bell.png">
+            <noti:NotificationPage />
+        </ContentPage>
+        <ContentPage
+            x:Name="tpSetting"
+            Title="{lang:Translate Setting}"
+            BackgroundImageSource="WhiteSmoke"
+            IconImageSource="ic_setting.png">
+            <setting:SettingPage />
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>

@@ -118,19 +118,17 @@ namespace iCa.ViewModels.Main.Order
                 }));
             }
         }
-        //public Action<OrderModel> DisplSel;
-        //public ICommand MenuCmd
+        public Action<OrderModel> DisplSel;
+        //public ICommand LoadOrdersCmd
         //{
         //    get
         //    {
         //        return new RelayCommand<object>(new Action<object>((obj) =>
         //        {
-        //            if (obj == null)
+        //            foreach (OrderModel _order in Orders)
         //            {
-        //                return;
+        //                _order.Total = double.Parse(_order.Weight) * double.Parse(_order.Price);
         //            }
-        //            OrderModel _order = obj as OrderModel;
-        //            DisplSel?.Invoke(_order);
         //        }));
         //    }
         //}

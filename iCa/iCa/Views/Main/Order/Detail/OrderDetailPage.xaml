@@ -7,7 +7,6 @@
     xmlns:img="clr-namespace:CustomControl"
     xmlns:item="clr-namespace:iCa.Views.Main.Item"
     xmlns:lang="clr-namespace:Language"
-    xmlns:local="clr-namespace:iCa.ViewModels"
     xmlns:model="clr-namespace:iCa.Models"
     xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
     xmlns:ui="clr-namespace:UI"

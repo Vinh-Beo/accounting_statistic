@@ -7,9 +7,11 @@
     xmlns:app="clr-namespace:Utils"
     xmlns:cv="clr-namespace:Converter"
     xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:magicGradients="clr-namespace:MagicGradients;assembly=MagicGradients"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:rv="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
-    xmlns:ui="clr-namespace:UI">
+    xmlns:ui="clr-namespace:UI"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
     <!--
         Define global resources and styles here, that apply to all pages in your app.
     -->
@@ -388,16 +390,16 @@
         <!--  Page  -->
         <Style
             x:Key="BasePage"
-            TargetType="ContentPage">
+            TargetType="ContentView">
             <Setter Property="iOS:Page.UseSafeArea" Value="True" />
-            <Setter Property="BackgroundImageSource" Value="{AppThemeBinding Light='lightbg.jpg', Dark='darkbg.jpg', Default='lightbg.jpg'}" />
+            <!--<Setter Property="BackgroundImageSource" Value="{AppThemeBinding Light='lightbg.jpg', Dark='darkbg.jpg', Default='lightbg.jpg'}" />-->
             <Setter Property="Shell.PresentationMode" Value="Modal" />
             <Setter Property="Shell.NavBarIsVisible" Value="False" />
             <Setter Property="BackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.BackgroundLightColor}, Light={x:Static app:AppColors.BackgroundLightColor}, Dark={x:Static app:AppColors.BackgroundDarkColor}}" />
         </Style>
         <Style
             x:Key="NoImageBackgroundPage"
-            TargetType="ContentPage">
+            TargetType="ContentView">
             <Setter Property="iOS:Page.UseSafeArea" Value="True" />
             <Setter Property="Shell.PresentationMode" Value="Modal" />
             <Setter Property="Shell.NavBarIsVisible" Value="False" />
@@ -736,5 +738,47 @@
             <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.BackgroundLightColor}, Light={x:Static app:AppColors.BackgroundLightColor}, Dark={x:Static app:AppColors.BackgroundDarkColor}}" />
             <Setter Property="Shell.FlyoutBehavior" Value="Disabled" />
         </Style>
+        <!--  Tabview  -->
+        <Style
+            x:Key="TabView"
+            TargetType="xct:TabView">
+            <Setter Property="TabContentBackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.BackgroundLightColor}, Light={x:Static app:AppColors.BackgroundLightColor}, Dark={x:Static app:AppColors.BackgroundDarkColor}}" />
+            <Setter Property="TabContentHeight" Value="80" />
+            <Setter Property="TabStripHeight" Value="80" />
+            <Setter Property="TabIndicatorColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="TabStripPlacement" Value="Bottom" />
+            <Setter Property="TabStripBackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.BackgroundLightColor}, Light={x:Static app:AppColors.BackgroundLightColor}, Dark={x:Static app:AppColors.BackgroundDarkColor}}" />
+        </Style>
+        <Style
+            x:Key="TabItemView"
+            TargetType="xct:TabViewItem">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="TextColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="TextColorSelected" Value="{x:Static app:AppColors.PrimaryColor}" />
+        </Style>
+        <Style
+            x:Key="TabPage"
+            TargetType="TabbedPage">
+            <Setter Property="BarBackgroundColor" Value="{AppThemeBinding Default={x:Static app:AppColors.BackgroundLightColor}, Light={x:Static app:AppColors.BackgroundLightColor}, Dark={x:Static app:AppColors.BackgroundDarkColor}}" />
+            <Setter Property="BarTextColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+            <Setter Property="UnselectedTabColor" Value="{AppThemeBinding Default={x:Static app:AppColors.TextPrimaryNormalColor}, Light={x:Static app:AppColors.TextPrimaryNormalColor}, Dark={x:Static app:AppColors.TextPrimaryNormalDarkColor}}" />
+            <Setter Property="SelectedTabColor" Value="{x:Static app:AppColors.PrimaryColor}" />
+        </Style>
+        <ControlTemplate x:Key="PageWithGradient">
+            <Grid>
+                <magicGradients:GradientView VerticalOptions="FillAndExpand">
+                    <magicGradients:GradientView.GradientSource>
+                        <magicGradients:CssGradientSource>
+                            <x:String>
+                                <![CDATA[
+                                            linear-gradient(306deg, rgba(54, 54, 54, 0.05) 0%, rgba(54, 54, 54, 0.05) 33.333%,rgba(85, 85, 85, 0.05) 33.333%, rgba(85, 85, 85, 0.05) 66.666%,rgba(255, 255, 255, 0.05) 66.666%, rgba(255, 255, 255, 0.05) 99.999%),linear-gradient(353deg, rgba(81, 81, 81, 0.05) 0%, rgba(81, 81, 81, 0.05) 33.333%,rgba(238, 238, 238, 0.05) 33.333%, rgba(238, 238, 238, 0.05) 66.666%,rgba(32, 32, 32, 0.05) 66.666%, rgba(32, 32, 32, 0.05) 99.999%),linear-gradient(140deg, rgba(192, 192, 192, 0.05) 0%, rgba(192, 192, 192, 0.05) 33.333%,rgba(109, 109, 109, 0.05) 33.333%, rgba(109, 109, 109, 0.05) 66.666%,rgba(30, 30, 30, 0.05) 66.666%, rgba(30, 30, 30, 0.05) 99.999%),linear-gradient(189deg, rgba(77, 77, 77, 0.05) 0%, rgba(77, 77, 77, 0.05) 33.333%,rgba(55, 55, 55, 0.05) 33.333%, rgba(55, 55, 55, 0.05) 66.666%,rgba(145, 145, 145, 0.05) 66.666%, rgba(145, 145, 145, 0.05) 99.999%),linear-gradient(90deg, rgb(9, 201, 186),rgb(18, 131, 221))
+                                        ]]>
+                            </x:String>
+                        </magicGradients:CssGradientSource>
+                    </magicGradients:GradientView.GradientSource>
+                </magicGradients:GradientView>
+                <ContentPresenter />
+            </Grid>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

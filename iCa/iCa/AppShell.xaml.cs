@@ -1,9 +1,11 @@
 ﻿using Common;
 using iCa.Models;
 using iCa.ViewModels.Common;
+using iCa.ViewModels.Main;
 using iCa.ViewModels.Main.Order;
 using iCa.Views;
 using iCa.Views.Common;
+using iCa.Views.Main;
 using iCa.Views.Main.Order;
 using System;
 using System.Collections.Generic;
@@ -21,60 +23,23 @@ namespace iCa
             InitializeComponent();
             Sharpnado.MaterialFrame.Initializer.Initialize(loggerEnable: false, debugLogEnable: true);
 
-            OrdersViewModel _vm = new OrdersViewModel()
+            MainViewModel _vm = new MainViewModel()
             {
                 IsBusy = false,
                 ResponseOK = true,
                 ResponseMessage = "",
-                IsStart = true,
-                Orders = new ObservableCollection<OrderModel>()
+                Order = new OrdersViewModel()
                 {
-                    //new OrderModel()
-                    //{
-                    //    Id = 0,
-                    //    Name = "Cá đuối",
-                    //    Type = ProductCode.StingRay,
-                    //    Price = "150",
-                    //    Weight = "15",
-                    //    CreateTime = DateTime.Now,
-                    //},
-                    //new OrderModel()
-                    //{
-                    //    Id = 0,
-                    //    Name = "Cá đuối",
-                    //    Type = ProductCode.StingRay,
-                    //    Price = "170",
-                    //    Weight = "10",
-                    //    CreateTime = DateTime.Now,
-                    //},
-                    //new OrderModel()
-                    //{
-                    //    Id = 0,
-                    //    Name = "Cá đuối",
-                    //    Type = ProductCode.StingRay,
-                    //    Price = "150",
-                    //    Weight = "7",
-                    //    CreateTime = DateTime.Now,
-                    //},
-                    //new OrderModel()
-                    //{
-                    //    Id = 0,
-                    //    Name = "Cá bop",
-                    //    Type = ProductCode.StingRay,
-                    //    Price = "230",
-                    //    Weight = "4",
-                    //    CreateTime = DateTime.Now,
-                    //},
+                    Orders = new ObservableCollection<OrderModel>()
                 }
             };
-            foreach (OrderModel _order in _vm.Orders)
-            {
-                _order.Total = double.Parse(_order.Weight) * double.Parse(_order.Price);
-            }
 
             Device.BeginInvokeOnMainThread(async () =>
             {
-                OrdersPage _p = new OrdersPage(_vm);
+                MainPage _p = new MainPage()
+                {
+                    BindingContext = _vm
+                };
                 await _vm.AppNavigator.NavigateAsync(_p);
             });
         }
